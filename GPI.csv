@@ -1,0 +1,869 @@
+,year,country,maize GPI
+0,2000,Angola,35.1
+1,2000,Benin,87.54
+2,2000,Botswana,78.47
+3,2000,Burkina Faso,44.45
+4,2000,Burundi,113.19
+5,2000,Cameroon,54.77
+6,2000,Central African Republic,154.21
+7,2000,Chad,29.27
+8,2000,Congo,99.73
+9,2000,Côte d'Ivoire,91.18
+10,2000,Democratic Republic of the Congo,93.4
+12,2000,Eritrea,38.41
+13,2000,Eswatini,158.69
+14,2000,Ethiopia,49.69
+15,2000,Gabon,94.34
+16,2000,Gambia,106.3
+17,2000,Ghana,86.14
+18,2000,Guinea,63.33
+19,2000,Guinea-Bissau,588.11
+20,2000,Kenya,92.12
+21,2000,Lesotho,193.34
+23,2000,Madagascar,77.03
+24,2000,Malawi,123.42
+25,2000,Mali,15.26
+26,2000,Mauritania,205.17
+27,2000,Mozambique,139.3
+28,2000,Namibia,76.28
+29,2000,Niger,15.03
+30,2000,Nigeria,59.76
+31,2000,Rwanda,20.2
+32,2000,Senegal,39.74
+33,2000,Sierra Leone,75.84
+34,2000,Somalia,442.65
+35,2000,South Africa,122.88
+37,2000,Togo,87.89
+38,2000,Uganda,62.77
+39,2000,United Republic of Tanzania,47.79
+40,2000,Zambia,57.84
+41,2000,Zimbabwe,271.56
+42,2001,Angola,36.9
+43,2001,Benin,77.64
+44,2001,Botswana,40.94
+45,2001,Burkina Faso,61.73
+46,2001,Burundi,116.56
+47,2001,Cameroon,53.15
+48,2001,Central African Republic,160.21
+49,2001,Chad,46.57
+50,2001,Congo,98.93
+51,2001,Côte d'Ivoire,90
+52,2001,Democratic Republic of the Congo,89.49
+54,2001,Eritrea,63.58
+55,2001,Eswatini,114.92
+56,2001,Ethiopia,59.33
+57,2001,Gabon,89.25
+58,2001,Gambia,136.09
+59,2001,Ghana,77.69
+60,2001,Guinea,67.81
+61,2001,Guinea-Bissau,629.85
+62,2001,Kenya,115.44
+63,2001,Lesotho,286.24
+65,2001,Madagascar,79.05
+66,2001,Malawi,82.54
+67,2001,Mali,20.83
+68,2001,Mauritania,90.46
+69,2001,Mozambique,131.56
+70,2001,Namibia,65.63
+71,2001,Niger,8.92
+72,2001,Nigeria,65.12
+73,2001,Rwanda,25.81
+74,2001,Senegal,53.6
+75,2001,Sierra Leone,80.4
+76,2001,Somalia,460.12
+77,2001,South Africa,82.81
+79,2001,Togo,95.46
+80,2001,Uganda,65.22
+81,2001,United Republic of Tanzania,62.78
+82,2001,Zambia,43.28
+83,2001,Zimbabwe,254.27
+84,2002,Angola,45.52
+85,2002,Benin,87.6
+86,2002,Botswana,132.83
+87,2002,Burkina Faso,64.48
+88,2002,Burundi,115.54
+89,2002,Cameroon,60.35
+90,2002,Central African Republic,165.5
+91,2002,Chad,36.04
+92,2002,Congo,99.54
+93,2002,Côte d'Ivoire,88.93
+94,2002,Democratic Republic of the Congo,85.71
+96,2002,Eritrea,20.42
+97,2002,Eswatini,93.34
+98,2002,Ethiopia,49.36
+99,2002,Gabon,82.94
+100,2002,Gambia,84.78
+101,2002,Ghana,112.81
+102,2002,Guinea,72.71
+103,2002,Guinea-Bissau,484.95
+104,2002,Kenya,96.68
+105,2002,Lesotho,201.25
+107,2002,Madagascar,73.49
+108,2002,Malawi,73.2
+109,2002,Mali,24.42
+110,2002,Mauritania,68.59
+111,2002,Mozambique,125.03
+112,2002,Namibia,64.75
+113,2002,Niger,10.78
+114,2002,Nigeria,67.45
+115,2002,Rwanda,28.71
+116,2002,Senegal,38.74
+117,2002,Sierra Leone,91.46
+118,2002,Somalia,443.48
+119,2002,South Africa,106.38
+121,2002,Togo,88.18
+122,2002,Uganda,65.54
+123,2002,United Republic of Tanzania,101.63
+124,2002,Zambia,31.73
+125,2002,Zimbabwe,100.13
+126,2003,Angola,49.78
+127,2003,Benin,84.02
+128,2003,Botswana,12.96
+129,2003,Burkina Faso,63.7
+130,2003,Burundi,106.48
+131,2003,Cameroon,62.19
+132,2003,Central African Republic,170.12
+133,2003,Chad,48.45
+134,2003,Congo,128.78
+135,2003,Côte d'Ivoire,87.95
+136,2003,Democratic Republic of the Congo,83.24
+138,2003,Eritrea,29.04
+139,2003,Eswatini,94.87
+140,2003,Ethiopia,46.56
+141,2003,Gabon,104.28
+142,2003,Gambia,147.9
+143,2003,Ghana,101.06
+144,2003,Guinea,77.43
+145,2003,Guinea-Bissau,442.31
+146,2003,Kenya,105.63
+147,2003,Lesotho,149
+149,2003,Madagascar,131.93
+150,2003,Malawi,90.91
+151,2003,Mali,29.45
+152,2003,Mauritania,222.1
+153,2003,Mozambique,129.09
+154,2003,Namibia,66.34
+155,2003,Niger,7.93
+156,2003,Nigeria,69.87
+157,2003,Rwanda,24.13
+158,2003,Senegal,188.53
+159,2003,Sierra Leone,117.21
+160,2003,Somalia,399.98
+161,2003,South Africa,101.52
+163,2003,Togo,90.61
+164,2003,Uganda,67.86
+165,2003,United Republic of Tanzania,58.68
+166,2003,Zambia,58.77
+167,2003,Zimbabwe,173.98
+168,2004,Angola,44.82
+169,2004,Benin,87.07
+170,2004,Botswana,58.71
+171,2004,Burkina Faso,44.66
+172,2004,Burundi,104.83
+173,2004,Cameroon,64.07
+174,2004,Central African Republic,174.86
+175,2004,Chad,42.2
+176,2004,Congo,127.58
+177,2004,Côte d'Ivoire,88.74
+178,2004,Democratic Republic of the Congo,80.81
+180,2004,Eritrea,14.34
+181,2004,Eswatini,92.64
+182,2004,Ethiopia,47.92
+183,2004,Gabon,98.9
+184,2004,Gambia,125.84
+185,2004,Ghana,88.39
+186,2004,Guinea,82.55
+187,2004,Guinea-Bissau,667.07
+188,2004,Kenya,98.59
+189,2004,Lesotho,147.6
+191,2004,Madagascar,140.94
+192,2004,Malawi,71.8
+193,2004,Mali,28.8
+194,2004,Mauritania,98.12
+195,2004,Mozambique,112.89
+196,2004,Namibia,64.06
+197,2004,Niger,13.71
+198,2004,Nigeria,72.77
+199,2004,Rwanda,26.3
+200,2004,Senegal,183.72
+201,2004,Sierra Leone,226.73
+202,2004,Somalia,290.52
+203,2004,South Africa,100.63
+205,2004,Togo,85.91
+206,2004,Uganda,54.73
+207,2004,United Republic of Tanzania,101.62
+208,2004,Zambia,59.69
+209,2004,Zimbabwe,384.61
+210,2005,Angola,55.05
+211,2005,Benin,86.62
+212,2005,Botswana,123.16
+213,2005,Burkina Faso,71.82
+214,2005,Burundi,103.04
+215,2005,Cameroon,67.79
+216,2005,Central African Republic,179.18
+217,2005,Chad,75.99
+218,2005,Congo,124.53
+219,2005,Côte d'Ivoire,89.61
+220,2005,Democratic Republic of the Congo,78.35
+222,2005,Eritrea,82.94
+223,2005,Eswatini,100.84
+224,2005,Ethiopia,62.69
+225,2005,Gabon,108.64
+226,2005,Gambia,121.32
+227,2005,Ghana,87.07
+228,2005,Guinea,88.14
+229,2005,Guinea-Bissau,814.07
+230,2005,Kenya,106.66
+231,2005,Lesotho,144.07
+233,2005,Madagascar,153.07
+234,2005,Malawi,53.22
+235,2005,Mali,38.47
+236,2005,Mauritania,164.5
+237,2005,Mozambique,97.68
+238,2005,Namibia,91.25
+239,2005,Niger,3.26
+240,2005,Nigeria,75.79
+241,2005,Rwanda,28.24
+242,2005,Senegal,178.84
+243,2005,Sierra Leone,268.33
+244,2005,Somalia,277.38
+245,2005,South Africa,120.28
+247,2005,Togo,81.44
+248,2005,Uganda,60.9
+249,2005,United Republic of Tanzania,66.55
+250,2005,Zambia,41.2
+251,2005,Zimbabwe,203.84
+252,2006,Angola,38.05
+253,2006,Benin,84.02
+254,2006,Botswana,113.97
+255,2006,Burkina Faso,75.51
+256,2006,Burundi,92.42
+257,2006,Cameroon,78.47
+258,2006,Central African Republic,175.61
+259,2006,Chad,67.02
+260,2006,Congo,121.23
+261,2006,Côte d'Ivoire,87.45
+262,2006,Democratic Republic of the Congo,75.9
+264,2006,Eritrea,170.56
+265,2006,Eswatini,90.31
+266,2006,Ethiopia,62.78
+267,2006,Gabon,98.75
+268,2006,Gambia,112.63
+269,2006,Ghana,86.1
+270,2006,Guinea,94.03
+271,2006,Guinea-Bissau,834
+272,2006,Kenya,115.71
+273,2006,Lesotho,184.52
+275,2006,Madagascar,154.11
+276,2006,Malawi,110.3
+277,2006,Mali,41.46
+278,2006,Mauritania,227.22
+279,2006,Mozambique,141.11
+280,2006,Namibia,134.73
+281,2006,Niger,61.35
+282,2006,Nigeria,87.93
+283,2006,Rwanda,27.33
+284,2006,Senegal,79.11
+285,2006,Sierra Leone,328.11
+286,2006,Somalia,134.6
+287,2006,South Africa,70.51
+289,2006,Togo,84.45
+290,2006,Uganda,60.15
+291,2006,United Republic of Tanzania,70.73
+292,2006,Zambia,65.45
+293,2006,Zimbabwe,321.43
+294,2007,Angola,42.95
+295,2007,Benin,87.94
+296,2007,Botswana,15.91
+297,2007,Burkina Faso,46.81
+298,2007,Burundi,88.09
+299,2007,Cameroon,80.76
+300,2007,Central African Republic,183.9
+301,2007,Chad,70.89
+302,2007,Congo,118.1
+303,2007,Côte d'Ivoire,71.27
+304,2007,Democratic Republic of the Congo,73.52
+306,2007,Eritrea,80.89
+307,2007,Eswatini,35.01
+308,2007,Ethiopia,62.93
+309,2007,Gabon,98.73
+310,2007,Gambia,123.6
+311,2007,Ghana,86.05
+312,2007,Guinea,100.09
+313,2007,Guinea-Bissau,270.32
+314,2007,Kenya,101.31
+315,2007,Lesotho,110.02
+317,2007,Madagascar,153.88
+318,2007,Malawi,132.46
+319,2007,Mali,39.16
+320,2007,Mauritania,217.92
+321,2007,Mozambique,111.72
+322,2007,Namibia,121.41
+323,2007,Niger,59.89
+324,2007,Nigeria,81.05
+325,2007,Rwanda,27.98
+326,2007,Senegal,67.16
+327,2007,Sierra Leone,150.23
+328,2007,Somalia,130.57
+329,2007,South Africa,71.71
+331,2007,Togo,82.44
+332,2007,Uganda,58.59
+333,2007,United Republic of Tanzania,73.51
+334,2007,Zambia,60.59
+335,2007,Zimbabwe,240.53
+336,2008,Angola,47.22
+337,2008,Benin,89.65
+338,2008,Botswana,64.76
+339,2008,Burkina Faso,83.19
+340,2008,Burundi,86.13
+341,2008,Cameroon,82.81
+342,2008,Central African Republic,189.13
+343,2008,Chad,76.9
+344,2008,Congo,119.06
+345,2008,Côte d'Ivoire,82.65
+346,2008,Democratic Republic of the Congo,71.21
+348,2008,Eritrea,23.87
+349,2008,Eswatini,79.84
+350,2008,Ethiopia,63.91
+351,2008,Gabon,101.44
+352,2008,Gambia,171.28
+353,2008,Ghana,101.09
+354,2008,Guinea,85.77
+355,2008,Guinea-Bissau,316.16
+356,2008,Kenya,79.48
+357,2008,Lesotho,108.18
+359,2008,Madagascar,154.33
+360,2008,Malawi,105.1
+361,2008,Mali,38.18
+362,2008,Mauritania,193.69
+363,2008,Mozambique,116.48
+364,2008,Namibia,125.36
+365,2008,Niger,19.15
+366,2008,Nigeria,88.27
+367,2008,Rwanda,44.71
+368,2008,Senegal,164.21
+369,2008,Sierra Leone,150.88
+370,2008,Somalia,126.84
+371,2008,South Africa,126.38
+373,2008,Togo,86.59
+374,2008,Uganda,104.39
+375,2008,United Republic of Tanzania,106.36
+376,2008,Zambia,51.85
+377,2008,Zimbabwe,78.42
+378,2009,Angola,62.86
+379,2009,Benin,107.26
+380,2009,Botswana,142.17
+381,2009,Burkina Faso,71.29
+382,2009,Burundi,83.74
+383,2009,Cameroon,93.78
+384,2009,Central African Republic,190.65
+385,2009,Chad,68.67
+386,2009,Congo,117.84
+387,2009,Côte d'Ivoire,81.84
+388,2009,Democratic Republic of the Congo,68.99
+390,2009,Eritrea,93.38
+391,2009,Eswatini,99.42
+392,2009,Ethiopia,66.64
+393,2009,Gabon,107.76
+394,2009,Gambia,202.01
+395,2009,Ghana,108.58
+396,2009,Guinea,90.58
+397,2009,Guinea-Bissau,306.48
+398,2009,Kenya,79.5
+399,2009,Lesotho,102.87
+401,2009,Madagascar,148.13
+402,2009,Malawi,138.82
+403,2009,Mali,78.53
+404,2009,Mauritania,144.22
+405,2009,Mozambique,150.64
+406,2009,Namibia,121.92
+407,2009,Niger,4
+408,2009,Nigeria,83.99
+409,2009,Rwanda,74.89
+410,2009,Senegal,117.21
+411,2009,Sierra Leone,184.92
+412,2009,Somalia,159.56
+413,2009,South Africa,118.5
+415,2009,Togo,93
+416,2009,Uganda,103.13
+417,2009,United Republic of Tanzania,63.42
+418,2009,Zambia,77.94
+419,2009,Zimbabwe,109.54
+420,2010,Angola,66.95
+421,2010,Benin,87.52
+422,2010,Botswana,73.28
+423,2010,Burkina Faso,87.72
+424,2010,Burundi,83.92
+425,2010,Cameroon,93.68
+426,2010,Central African Republic,185.3
+427,2010,Chad,68.52
+428,2010,Congo,116.36
+429,2010,Côte d'Ivoire,80.66
+430,2010,Democratic Republic of the Congo,102.95
+432,2010,Eritrea,98.89
+433,2010,Eswatini,111.64
+434,2010,Ethiopia,76.26
+435,2010,Gabon,106.58
+436,2010,Gambia,236.63
+437,2010,Ghana,122.42
+438,2010,Guinea,91.27
+439,2010,Guinea-Bissau,221.5
+440,2010,Kenya,109.79
+441,2010,Lesotho,229.33
+443,2010,Madagascar,139.45
+444,2010,Malawi,128.72
+445,2010,Mali,69.79
+446,2010,Mauritania,235.84
+447,2010,Mozambique,189.91
+448,2010,Namibia,111.19
+449,2010,Niger,27.06
+450,2010,Nigeria,85.26
+451,2010,Rwanda,109.94
+452,2010,Senegal,73.04
+453,2010,Sierra Leone,311.78
+454,2010,Somalia,160.09
+455,2010,South Africa,124.53
+457,2010,Togo,88.66
+458,2010,Uganda,100.97
+459,2010,United Republic of Tanzania,87.93
+460,2010,Zambia,111.49
+461,2010,Zimbabwe,184.27
+462,2011,Angola,75.87
+463,2011,Benin,97.86
+464,2011,Botswana,239.29
+465,2011,Burkina Faso,80.89
+466,2011,Burundi,82.32
+467,2011,Cameroon,85.71
+468,2011,Central African Republic,194.65
+469,2011,Chad,91.82
+470,2011,Congo,114.94
+471,2011,Côte d'Ivoire,76.56
+472,2011,Democratic Republic of the Congo,105.72
+474,2011,Eritrea,107.83
+475,2011,Eswatini,98.93
+476,2011,Ethiopia,87.1
+477,2011,Gabon,107.03
+478,2011,Gambia,82.08
+479,2011,Ghana,107.49
+480,2011,Guinea,93.18
+481,2011,Guinea-Bissau,140.19
+482,2011,Kenya,104.21
+483,2011,Lesotho,130.31
+485,2011,Madagascar,141.02
+486,2011,Malawi,135.32
+487,2011,Mali,64.69
+488,2011,Mauritania,133.43
+489,2011,Mozambique,192.27
+490,2011,Namibia,110.97
+491,2011,Niger,18.66
+492,2011,Nigeria,95.91
+493,2011,Rwanda,130.28
+494,2011,Senegal,47.29
+495,2011,Sierra Leone,309.56
+496,2011,Somalia,77.39
+497,2011,South Africa,99.41
+499,2011,Togo,88.05
+500,2011,Uganda,105.41
+501,2011,United Republic of Tanzania,78.38
+502,2011,Zambia,116.46
+503,2011,Zimbabwe,153.93
+504,2012,Angola,26.3
+505,2012,Benin,96.6
+506,2012,Botswana,51.16
+507,2012,Burkina Faso,113.43
+508,2012,Burundi,86.92
+509,2012,Cameroon,92.76
+510,2012,Central African Republic,194.77
+511,2012,Chad,135.02
+512,2012,Congo,114.2
+513,2012,Côte d'Ivoire,78.98
+514,2012,Democratic Republic of the Congo,104.68
+516,2012,Eritrea,116.97
+517,2012,Eswatini,106.89
+518,2012,Ethiopia,88.08
+519,2012,Gabon,105.29
+520,2012,Gambia,101.46
+521,2012,Ghana,121.44
+522,2012,Guinea,95.35
+523,2012,Guinea-Bissau,122.75
+524,2012,Kenya,112.84
+525,2012,Lesotho,155.28
+527,2012,Madagascar,143.49
+528,2012,Malawi,128.68
+529,2012,Mali,68.67
+530,2012,Mauritania,254.44
+531,2012,Mozambique,201.63
+532,2012,Namibia,177.77
+533,2012,Niger,40.75
+534,2012,Nigeria,91.38
+535,2012,Rwanda,138.56
+536,2012,Senegal,84.71
+537,2012,Sierra Leone,225.72
+538,2012,Somalia,169.36
+539,2012,South Africa,114.77
+540,2012,Sudan,113.78
+541,2012,Togo,108.84
+542,2012,Uganda,109.75
+543,2012,United Republic of Tanzania,89.52
+544,2012,Zambia,106.42
+545,2012,Zimbabwe,163.94
+546,2013,Angola,86.37
+547,2013,Benin,104.26
+548,2013,Botswana,25.13
+549,2013,Burkina Faso,112.12
+550,2013,Burundi,96.95
+551,2013,Cameroon,84.88
+552,2013,Central African Republic,148.51
+553,2013,Chad,119.44
+554,2013,Congo,111.78
+555,2013,Côte d'Ivoire,78.14
+556,2013,Democratic Republic of the Congo,103.69
+558,2013,Eritrea,104.93
+559,2013,Eswatini,154.13
+560,2013,Ethiopia,90.86
+561,2013,Gabon,103.6
+562,2013,Gambia,108.06
+563,2013,Ghana,107.23
+564,2013,Guinea,97.58
+565,2013,Guinea-Bissau,121.59
+566,2013,Kenya,105.53
+567,2013,Lesotho,150.6
+569,2013,Madagascar,118.78
+570,2013,Malawi,125.85
+571,2013,Mali,76.87
+572,2013,Mauritania,67.38
+573,2013,Mozambique,97.46
+574,2013,Namibia,79.81
+575,2013,Niger,44.1
+576,2013,Nigeria,86.17
+577,2013,Rwanda,157.69
+578,2013,Senegal,81.53
+579,2013,Sierra Leone,224.4
+580,2013,Somalia,168.86
+581,2013,South Africa,110.32
+582,2013,Sudan,93.72
+583,2013,Togo,88.99
+584,2013,Uganda,107.18
+585,2013,United Republic of Tanzania,91.14
+586,2013,Zambia,91.45
+587,2013,Zimbabwe,137.49
+588,2014,Angola,90.67
+589,2014,Benin,104.16
+590,2014,Botswana,183.12
+591,2014,Burkina Faso,98.38
+592,2014,Burundi,73.79
+593,2014,Cameroon,97.95
+594,2014,Central African Republic,95.49
+595,2014,Chad,91.79
+596,2014,Congo,82.7
+597,2014,Côte d'Ivoire,78.52
+598,2014,Democratic Republic of the Congo,101.65
+600,2014,Eritrea,93.67
+601,2014,Eswatini,153.26
+602,2014,Ethiopia,96.21
+603,2014,Gabon,101.65
+604,2014,Gambia,96.11
+605,2014,Ghana,104.53
+606,2014,Guinea,98.9
+607,2014,Guinea-Bissau,113.22
+608,2014,Kenya,100.86
+609,2014,Lesotho,155.54
+611,2014,Madagascar,111.24
+612,2014,Malawi,133.76
+613,2014,Mali,79.41
+614,2014,Mauritania,132.43
+615,2014,Mozambique,109.29
+616,2014,Namibia,109.78
+617,2014,Niger,134.9
+618,2014,Nigeria,107.53
+619,2014,Rwanda,134.44
+620,2014,Senegal,62.78
+621,2014,Sierra Leone,113.82
+622,2014,Somalia,116.71
+623,2014,South Africa,131.02
+624,2014,Sudan,101.75
+625,2014,Togo,104.36
+626,2014,Uganda,108.59
+627,2014,United Republic of Tanzania,111.12
+628,2014,Zambia,117.11
+629,2014,Zimbabwe,139.62
+630,2015,Angola,97.37
+631,2015,Benin,96.03
+632,2015,Botswana,23.85
+633,2015,Burkina Faso,97.93
+634,2015,Burundi,90.77
+635,2015,Cameroon,100.31
+636,2015,Central African Republic,96.1
+637,2015,Chad,93.35
+638,2015,Congo,104.57
+639,2015,Côte d'Ivoire,115.45
+640,2015,Democratic Republic of the Congo,99.41
+642,2015,Eritrea,103.56
+643,2015,Eswatini,104.86
+644,2015,Ethiopia,99.48
+645,2015,Gabon,99.96
+646,2015,Gambia,110.98
+647,2015,Ghana,98.01
+648,2015,Guinea,100.41
+649,2015,Guinea-Bissau,94.57
+650,2015,Kenya,107.42
+651,2015,Lesotho,112.09
+653,2015,Madagascar,97.5
+654,2015,Malawi,90.81
+655,2015,Mali,100.43
+656,2015,Mauritania,71.6
+657,2015,Mozambique,98.58
+658,2015,Namibia,107.65
+659,2015,Niger,81.18
+660,2015,Nigeria,92.68
+661,2015,Rwanda,83.33
+662,2015,Senegal,104.01
+663,2015,Sierra Leone,120.76
+664,2015,Somalia,122.35
+665,2015,South Africa,95.72
+666,2015,Sudan,98.64
+667,2015,Togo,97.09
+668,2015,Uganda,103.26
+669,2015,United Republic of Tanzania,94.15
+670,2015,Zambia,88.64
+671,2015,Zimbabwe,90.11
+672,2016,Angola,111.96
+673,2016,Benin,99.81
+674,2016,Botswana,93.03
+675,2016,Burkina Faso,103.7
+676,2016,Burundi,135.44
+677,2016,Cameroon,101.74
+678,2016,Central African Republic,108.41
+679,2016,Chad,114.86
+680,2016,Congo,112.73
+681,2016,Côte d'Ivoire,106.04
+682,2016,Democratic Republic of the Congo,98.94
+684,2016,Eritrea,102.78
+685,2016,Eswatini,41.88
+686,2016,Ethiopia,104.31
+687,2016,Gabon,98.4
+688,2016,Gambia,92.92
+689,2016,Ghana,97.46
+690,2016,Guinea,100.69
+691,2016,Guinea-Bissau,92.22
+692,2016,Kenya,91.73
+693,2016,Lesotho,32.37
+695,2016,Madagascar,91.25
+696,2016,Malawi,75.43
+697,2016,Mali,120.16
+698,2016,Mauritania,95.97
+699,2016,Mozambique,92.13
+700,2016,Namibia,82.56
+701,2016,Niger,83.92
+702,2016,Nigeria,99.79
+703,2016,Rwanda,82.23
+704,2016,Senegal,133.21
+705,2016,Sierra Leone,65.42
+706,2016,Somalia,60.94
+707,2016,South Africa,73.26
+708,2016,Sudan,99.6
+709,2016,Togo,98.55
+710,2016,Uganda,88.15
+711,2016,United Republic of Tanzania,94.73
+712,2016,Zambia,94.25
+713,2016,Zimbabwe,70.27
+714,2017,Angola,114.91
+715,2017,Benin,102.37
+716,2017,Botswana,74.03
+717,2017,Burkina Faso,96.42
+718,2017,Burundi,124.02
+719,2017,Cameroon,94.36
+720,2017,Central African Republic,103.69
+721,2017,Chad,99.27
+722,2017,Congo,114.08
+723,2017,Côte d'Ivoire,109.53
+724,2017,Democratic Republic of the Congo,99.48
+726,2017,Eritrea,101.82
+727,2017,Eswatini,105.79
+728,2017,Ethiopia,120.34
+729,2017,Gabon,96.91
+730,2017,Gambia,90.42
+731,2017,Ghana,111.31
+732,2017,Guinea,107.14
+733,2017,Guinea-Bissau,104.99
+734,2017,Kenya,85.64
+735,2017,Lesotho,287.8
+737,2017,Madagascar,79.13
+738,2017,Malawi,107.34
+739,2017,Mali,148.92
+740,2017,Mauritania,136.31
+741,2017,Mozambique,89.83
+742,2017,Namibia,132.14
+743,2017,Niger,81.45
+744,2017,Nigeria,98.22
+745,2017,Rwanda,76.82
+746,2017,Senegal,132.85
+747,2017,Sierra Leone,114.03
+748,2017,Somalia,75.2
+749,2017,South Africa,155.93
+750,2017,Sudan,32.78
+751,2017,Togo,99.38
+752,2017,Uganda,96.5
+753,2017,United Republic of Tanzania,99.51
+754,2017,Zambia,114.69
+755,2017,Zimbabwe,206.16
+756,2018,Angola,128.94
+757,2018,Benin,103.22
+758,2018,Botswana,145.68
+759,2018,Burkina Faso,103.99
+760,2018,Burundi,153.13
+761,2018,Cameroon,93.35
+762,2018,Central African Republic,101.69
+763,2018,Chad,105.99
+764,2018,Congo,116.32
+765,2018,Côte d'Ivoire,109.87
+766,2018,Democratic Republic of the Congo,96.27
+768,2018,Eritrea,100.39
+769,2018,Eswatini,141.2
+770,2018,Ethiopia,113.05
+771,2018,Gabon,96.44
+772,2018,Gambia,53.98
+773,2018,Ghana,124.97
+774,2018,Guinea,104.62
+775,2018,Guinea-Bissau,102.53
+776,2018,Kenya,105.72
+777,2018,Lesotho,180.92
+779,2018,Madagascar,58.92
+780,2018,Malawi,81.38
+781,2018,Mali,145.34
+782,2018,Mauritania,113.81
+783,2018,Mozambique,100.25
+784,2018,Namibia,108.34
+785,2018,Niger,60.41
+786,2018,Nigeria,98.52
+787,2018,Rwanda,88.73
+788,2018,Senegal,153.01
+789,2018,Sierra Leone,114.16
+790,2018,Somalia,96.08
+791,2018,South Africa,115
+792,2018,Sudan,85.92
+793,2018,Togo,100.61
+794,2018,Uganda,114.08
+795,2018,United Republic of Tanzania,90.51
+796,2018,Zambia,73.86
+797,2018,Zimbabwe,205.66
+798,2019,Angola,127.04
+799,2019,Benin,105
+800,2019,Botswana,42.21
+801,2019,Burkina Faso,101.85
+802,2019,Burundi,138.17
+803,2019,Cameroon,91.21
+804,2019,Central African Republic,114.41
+805,2019,Chad,97.1
+806,2019,Congo,123.6
+807,2019,Côte d'Ivoire,111.95
+808,2019,Democratic Republic of the Congo,91.24
+810,2019,Eritrea,98.86
+811,2019,Eswatini,117.78
+812,2019,Ethiopia,104.82
+813,2019,Gabon,92.75
+814,2019,Gambia,35.99
+815,2019,Ghana,153.89
+816,2019,Guinea,96.38
+817,2019,Guinea-Bissau,138.49
+818,2019,Kenya,92.5
+819,2019,Lesotho,40.02
+821,2019,Madagascar,58.57
+822,2019,Malawi,99.61
+823,2019,Mali,148.31
+824,2019,Mauritania,159.22
+825,2019,Mozambique,100.5
+826,2019,Namibia,80.9
+827,2019,Niger,74.65
+828,2019,Nigeria,110.77
+829,2019,Rwanda,86.02
+830,2019,Senegal,162.75
+831,2019,Sierra Leone,187.74
+832,2019,Somalia,51.78
+833,2019,South Africa,102.43
+834,2019,Sudan,45.36
+835,2019,Togo,101.03
+836,2019,Uganda,88.41
+837,2019,United Republic of Tanzania,79.12
+838,2019,Zambia,59.98
+839,2019,Zimbabwe,100.02
+840,2020,Angola,129.65
+841,2020,Benin,104.06
+842,2020,Botswana,352.69
+843,2020,Burkina Faso,111.27
+844,2020,Burundi,128.9
+845,2020,Cameroon,88.01
+846,2020,Central African Republic,116.01
+847,2020,Chad,92.44
+848,2020,Congo,112.13
+849,2020,Côte d'Ivoire,116.43
+850,2020,Democratic Republic of the Congo,90.29
+852,2020,Eritrea,97.27
+853,2020,Eswatini,106.85
+854,2020,Ethiopia,106.17
+855,2020,Gabon,91.14
+856,2020,Gambia,45.87
+857,2020,Ghana,157.6
+858,2020,Guinea,96.31
+859,2020,Guinea-Bissau,188.41
+860,2020,Kenya,95.9
+861,2020,Lesotho,34.96
+863,2020,Madagascar,58.61
+864,2020,Malawi,105.56
+865,2020,Mali,132.43
+866,2020,Mauritania,135.06
+867,2020,Mozambique,109.77
+868,2020,Namibia,113.09
+869,2020,Niger,88.42
+870,2020,Nigeria,106.4
+871,2020,Rwanda,89.45
+872,2020,Senegal,227.46
+873,2020,Sierra Leone,125.92
+874,2020,Somalia,65.84
+875,2020,South Africa,135.58
+876,2020,Sudan,23.98
+877,2020,Togo,95.71
+878,2020,Uganda,141.28
+879,2020,United Republic of Tanzania,91.15
+880,2020,Zambia,98.44
+881,2020,Zimbabwe,152.25
+882,2021,Angola,125.52
+883,2021,Benin,102.27
+884,2021,Botswana,377.71
+885,2021,Burkina Faso,107.96
+886,2021,Burundi,135.16
+887,2021,Cameroon,86.08
+888,2021,Central African Republic,94.94
+889,2021,Chad,80.16
+890,2021,Congo,109.56
+891,2021,Côte d'Ivoire,110.16
+892,2021,Democratic Republic of the Congo,89.72
+894,2021,Eritrea,95.54
+895,2021,Eswatini,121.62
+896,2021,Ethiopia,110.66
+897,2021,Gabon,89.46
+898,2021,Gambia,52.62
+899,2021,Ghana,178.31
+900,2021,Guinea,94.67
+901,2021,Guinea-Bissau,232.21
+902,2021,Kenya,81.99
+903,2021,Lesotho,142.73
+905,2021,Madagascar,59.03
+906,2021,Malawi,127.61
+907,2021,Mali,131.46
+908,2021,Mauritania,105.32
+909,2021,Mozambique,137.27
+910,2021,Namibia,159.71
+911,2021,Niger,10.39
+912,2021,Nigeria,106.76
+913,2021,Rwanda,93.98
+914,2021,Senegal,219.41
+915,2021,Sierra Leone,104.55
+916,2021,Somalia,63.8
+917,2021,South Africa,142.94
+918,2021,Sudan,40.14
+919,2021,Togo,98.12
+920,2021,Uganda,84.01
+921,2021,United Republic of Tanzania,92.77
+922,2021,Zambia,102.26
+923,2021,Zimbabwe,182.34
