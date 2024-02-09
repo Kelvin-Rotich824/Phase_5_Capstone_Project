@@ -160,9 +160,9 @@ st.header("Inferential Regression Model")
 st.subheader("Regression Results")
 st.dataframe(df)
 st.subheader("Evaluation Metrics")
-st.write(f"R-squared: {voting_regressor.score(X, y):.4f}")
-st.write(f"RMSE: {np.root(metrics.mean_squared_error(y, y_pred1):.4f)}")
-st.write(f"MAE: {metrics.mean_absolute_error(y, y_pred1):.4f}")
+st.write(f"R-squared: {voting_regressor.score(X, y)}")
+st.write(f"RMSE: {np.root(metrics.mean_squared_error(y, y_pred1))}")
+st.write(f"MAE: {metrics.mean_absolute_error(y, y_pred1)}")
 
 # Residuals Plot
 st.subheader("Residuals Plot")
@@ -182,8 +182,8 @@ st.subheader("Anomaly Detection Results")
 st.write(f"Number of Inliers: {len(y_pred_outlier[y_pred_outlier == 1])}")
 st.write(f"Number of Outliers: {len(y_pred_outlier[y_pred_outlier == -1])}")
 st.subheader("Evaluation Metrics )")
-st.write(f"RMSE: {np.root(metrics.mean_squared_error(y, y_pred_outlier):.4f)}")
-st.write(f"MAE: {metrics.mean_absolute_error(y, y_pred_outlier):.4f}")
+st.write(f"RMSE: {np.root(metrics.mean_squared_error(y, y_pred_outlier))}")
+st.write(f"MAE: {metrics.mean_absolute_error(y, y_pred_outlier)}")
 
 # Anomaly Score Distribution
 st.subheader("Anomaly Score Distribution")
