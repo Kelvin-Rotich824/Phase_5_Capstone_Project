@@ -1,15 +1,7 @@
 import pandas as pd
 import joblib
 import numpy as np
-from streamlit import (
-    header,
-    subheader,
-    write,
-    dataframe,
-    st,
-    pyplot,
-    expander,
-)
+from streamlit as st
 
 # Data loading and preprocessing (replace with your data and preprocessing steps)
 # Loading the datasets
