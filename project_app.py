@@ -156,7 +156,7 @@ predictions = pd.DataFrame(y_pred1, index=X.index)
 predictions = predictions.rename(columns={0:'Predicted dry weight loss'})
 df = pd.concat([X_transformed, prediction_data], axis=1)
 
-st.header("VotingRegressor Model")
+st.header("Inferential Regression Model")
 st.subheader("Regression Results")
 st.dataframe(df)
 st.subheader("Evaluation Metrics")
@@ -177,12 +177,12 @@ svm = joblib.load("anomaly_model.pkl")
 svm.fit(X_transformed)
 y_pred_outlier = svm.predict(X_transformed)
 
-st.header("OneClass Model (Local Outlier Factor)")
+st.header("Anomaly Detection")
 st.subheader("Anomaly Detection Results")
 st.write(f"Number of Inliers: {len(y_pred_outlier[y_pred_outlier == 1])}")
 st.write(f"Number of Outliers: {len(y_pred_outlier[y_pred_outlier == -1])}")
 st.subheader("Evaluation Metrics )")
-st.write(f"RMSE: {np.root(metrics.mean_squared_error(y, y_pred_outlier):.4f)})")
+st.write(f"RMSE: {np.root(metrics.mean_squared_error(y, y_pred_outlier):.4f)}")
 st.write(f"MAE: {metrics.mean_absolute_error(y, y_pred_outlier):.4f}")
 
 # Anomaly Score Distribution
@@ -190,7 +190,7 @@ st.subheader("Anomaly Score Distribution")
 st.histogram(svm.negative_outlier_factor_, bins=20)
 
 # Prophet Forecast
-st.header("Prophet Forecast")
+st.header("Time Series Forecast")
 future_date = st.date_input("Select a date for prediction:", value=pd.to_datetime("2050-01-01"))
 # Copying the dataframe.
 ts = data.copy()
