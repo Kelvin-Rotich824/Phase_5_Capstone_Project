@@ -108,6 +108,9 @@ for index, row in data.iterrows():
     else:
         data.at[index, 'Region'] = "Other"
 
+# Creating the 'years_to_2050' column
+data['years_to_2050'] = 2050 - data['year']
+
 # Reordering the columns
 column_order = ['country', 'Region', 'year', 'cpi', 'maize GPI', 'Import Quantity', 'Import Value', 'Cropland nitrogen per unit area', 'Cropland potassium per unit area', 'pesticide use per area of cropland', 'temperature change', 'Area harvested', 'Production', 'Yield', 'years_to_2050', 'dry weight loss']
 
@@ -117,9 +120,6 @@ data = data[column_order]
 # Convert 'year' column to integer type
 data["year"] = data["year"].astype(int)
 data.info()
-
-# Creating the 'years_to_2050' column
-data['years_to_2050'] = 2050 - data['year']
 
 # Selecting the necessary columns
 X_fourth = X_numeric[['cpi', 'Import Value','Cropland nitrogen per unit area', 'pesticide use per area of cropland', 'Production', 'Yield']]
