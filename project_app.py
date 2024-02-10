@@ -2,6 +2,7 @@ import pandas as pd
 import joblib
 import numpy as np
 import streamlit as st
+from sklearn.preprocessing import StandardScaler
 
 # Data loading and preprocessing (replace with your data and preprocessing steps)
 # Loading the datasets
@@ -134,6 +135,7 @@ X_transformed = pd.concat([X_fourth, X_cat], axis=1)
 data['years_to_2050'] = 2050 - data['year']
 # combining to our transformed dataset
 X_transformed = pd.concat([X_transformed, data['years_to_2050']], axis=1)
+X_scaled = StandardScaler().fit_transform(X_transformed)
 
 # Stating the target variable
 y = data['dry weight loss']
@@ -141,7 +143,7 @@ y = data['dry weight loss']
 # VotingRegressor Model Training and Evaluation
 model_1 = joblib.load('regression_model.pkl')
 
-y_pred1 = model_1.predict(X)
+y_pred1 = model_1.predict(X_scaled)
 residuals = y - y_pred1
 
 predictions = pd.DataFrame(y_pred1, index=X.index)
