@@ -152,14 +152,16 @@ y_pred1 = model_1.predict(X_scaled)
 residuals = y - y_pred1
 
 predictions = pd.DataFrame(y_pred1, index=X_transformed.index)
+y = y.rename(columns={0:'Actual dry weight loss'})
 predictions = predictions.rename(columns={0:'Predicted dry weight loss'})
-df = pd.concat([X_transformed, predictions], axis=1)
+df = pd.concat([X_transformed, y], axis=1)
+df = pd.concat([df, predictions], axis=1)
 
 st.header("Inferential Regression Model")
 st.subheader("Regression Results")
 st.dataframe(df)
 st.subheader("Evaluation Metrics")
-st.write(f"R-squared: {voting_regressor.score(X, y)}")
+st.write(f"R-squared: {model_1.score(X, y)}")
 st.write(f"RMSE: {np.root(metrics.mean_squared_error(y, y_pred1))}")
 st.write(f"MAE: {metrics.mean_absolute_error(y, y_pred1)}")
 
