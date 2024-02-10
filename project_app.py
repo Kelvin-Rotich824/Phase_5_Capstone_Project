@@ -232,6 +232,7 @@ def predict_for_date(date):
     ts_model.fit(ts_prophet)
     future = ts_model.make_future_dataframe(periods=18263, freq="D", include_history=True)
     forecast = ts_model.predict(future)
+    forecast = pd.DataFrame(forecast)
 
     return forecast
 
@@ -250,23 +251,14 @@ if selected_date:
     # Display the prediction result
     st.write(f"Predicted dry weight loss for {selected_date}: {prediction}")
 
-    # (Optional) Plot the prediction (add if desired)
-    # ... (your code to plot the prediction)
+   # Plots
+    st.subheader("Forecast Plot")
+    fig = ts_model.plot(forecast)
+    st.pyplot(fig)
+
 
 else:
     st.write("Please select a date for prediction.")
-
-# Modelling for graph plots
-ts_model = joblib.load('ts_model.pkl')
-ts_model.fit(ts_prophet)
-future = ts_model.make_future_dataframe(periods=18263, freq="D", include_history=True)
-forecast = ts_model.predict(future)
-predictions2 = forecast2['yhat'][-len(ts_prophet):]
-
-# Plots
-st.subheader("Forecast Plot")
-fig = ts_model.plot(forecast)
-st.pyplot(fig)
 
 # Metrics
 st.subheader("Model performance")
