@@ -193,7 +193,14 @@ st.write(f"MAE: {mean_absolute_error(y, y_pred_outlier)}")
 
 # Anomaly Score Distribution
 st.subheader("Anomaly Score Distribution")
-st.histogram(svm.decision_function(X_scaled), bins=20)
+fig, ax = plt.subplots()
+ax.hist(svm.decision_function(X_scaled), bins="auto")
+ax.set_xlabel("Values")
+ax.set_ylabel("Frequency")
+
+
+# Plotting the histogram in Streamlit
+st.pyplot(fig)
 
 # Prophet Forecast
 st.header("Time Series Forecast")
