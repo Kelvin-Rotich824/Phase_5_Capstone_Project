@@ -204,34 +204,71 @@ st.pyplot(fig)
 
 # Prophet Forecast
 st.header("Time Series Forecast")
-future_date = st.date_input("Select a date for prediction:", value=pd.to_datetime("2050-01-01"))
-# Copying the dataframe.
-ts = data.copy()
-# Setting 'year' as the index
-ts['year'] = pd.to_datetime(ts['year'], format='%Y')
-# Dropping the null values
-ts = ts.dropna(subset=['dry weight loss'])
-# Grouping the dataframe
-ts = ts.groupby('year').aggregate({'dry weight loss':'mean'})
-# Resampling the data to daily
-ts = ts.resample('D').asfreq()
-# Filling the null values
-ts = ts.interpolate(method='linear', axis=0, limit_direction='forward')
-# Subtracting the weighted rolling mean
-exp_rolling_mean = ts.ewm(halflife=2).mean()
-ts_minus_exp_roll_mean = ts - exp_rolling_mean
-# Differencing of one
-ts_diff = ts_minus_exp_roll_mean.diff(periods=1).dropna()
-#Resetting the index of the data
-ts_prophet = ts_diff.reset_index()
-ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
+# Function to perform prediction for a given date
+def predict_for_date(date):
+    # Preprocess the date (handle potential date format issues)
+    # Copying the dataframe.
+    ts = data.copy()
+    # Setting 'year' as the index
+    ts['year'] = pd.to_datetime(ts['year'], format='%Y')
+    # Dropping the null values
+    ts = ts.dropna(subset=['dry weight loss'])
+    # Grouping the dataframe
+    ts = ts.groupby('year').aggregate({'dry weight loss':'mean'})
+    # Resampling the data to daily
+    ts = ts.resample('D').asfreq()
+    # Filling the null values
+    ts = ts.interpolate(method='linear', axis=0, limit_direction='forward')
+    # Subtracting the weighted rolling mean
+    exp_rolling_mean = ts.ewm(halflife=2).mean()
+    ts_minus_exp_roll_mean = ts - exp_rolling_mean
+    # Differencing of one
+    ts_diff = ts_minus_exp_roll_mean.diff(periods=1).dropna()
+    #Resetting the index of the data
+    ts_prophet = ts_diff.reset_index()
+    ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
+    
+    ts_model = joblib.load('ts_model.pkl')
+    ts_model.fit(ts_prophet)
+    future = ts_model.make_future_dataframe(periods=18263, freq="D", include_history=True)
+    forecast = ts_model.predict(future)
 
-# Replace date and target columns
+    return forecast
+
+# Date selection
+selected_date = st.date_input(
+    "Select a date for prediction:",
+    value=pd.to_datetime("2050-01-01"),
+    min_value=pd.to_datetime("2022-01-01"),
+    max_value=pd.to_datetime("2050-12-31"),
+)
+# Check if a date is selected
+if selected_date:
+    # Call the prediction function
+    prediction = predict_for_date(selected_date)
+
+    # Display the prediction result
+    st.write(f"Predicted dry weight loss for {selected_date}: {prediction}")
+
+    # (Optional) Plot the prediction (add if desired)
+    # ... (your code to plot the prediction)
+
+else:
+    st.write("Please select a date for prediction.")
+
+# Modelling for graph plots
 ts_model = joblib.load('ts_model.pkl')
 ts_model.fit(ts_prophet)
 future = ts_model.make_future_dataframe(periods=18263, freq="D", include_history=True)
 forecast = ts_model.predict(future)
+predictions2 = forecast2['yhat'][-len(ts_prophet):]
 
+# Plots
 st.subheader("Forecast Plot")
 fig = ts_model.plot(forecast)
 st.pyplot(fig)
+
+# Metrics
+st.subheader("Model performance")
+st.write(f"RMSE: {np.sqrt(mean_squared_error(y, predictions2))}")
+st.write(f"MAE: {mean_absolute_error(y, predictions2)}")
