@@ -301,14 +301,3 @@ predictions2 = pd.DataFrame({
         "yhat_lower": forecast["yhat_lower"],
         "yhat_upper": forecast["yhat_upper"]
     })
-
-# Metrics
-st.subheader("Model performance")
-# Calculate and display RMSE and MAE
-actual_values = ts_prophet["y"].iloc[-1]
-predicted_value = predictions2["yhat"].iloc[-1]
-rmse = np.sqrt(mean_squared_error(actual_values, predicted_value))
-mae = mean_absolute_error(actual_values, predicted_value)
-
-st.write(f"RMSE: {rmse}")
-st.write(f"MAE: {mae}")
