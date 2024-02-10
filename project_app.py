@@ -151,7 +151,7 @@ model_1.fit(X_scaled, y)
 y_pred1 = model_1.predict(X_scaled)
 residuals = y - y_pred1
 
-predictions = pd.DataFrame(y_pred1, index=X.index)
+predictions = pd.DataFrame(y_pred1, index=X_transformed.index)
 predictions = predictions.rename(columns={0:'Predicted dry weight loss'})
 df = pd.concat([X_transformed, prediction_data], axis=1)
 
