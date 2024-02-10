@@ -118,6 +118,9 @@ data = data[column_order]
 data["year"] = data["year"].astype(int)
 data.info()
 
+# Creating the 'years_to_2050' column
+data['years_to_2050'] = 2050 - data['year']
+
 # Selecting the necessary columns
 X_fourth = X_numeric[['cpi', 'Import Value','Cropland nitrogen per unit area', 'pesticide use per area of cropland', 'Production', 'Yield']]
 # Converting their values to the fourth root
@@ -131,8 +134,6 @@ X_cat = pd.get_dummies(X_cat, columns=['Region'], drop_first=True, dtype=int)
 # Combining the two dataframes
 X_transformed = pd.concat([X_fourth, X_cat], axis=1)
 
-# Subtracting the data
-data['years_to_2050'] = 2050 - data['year']
 # combining to our transformed dataset
 X_transformed = pd.concat([X_transformed, data['years_to_2050']], axis=1)
 X_scaled = StandardScaler().fit_transform(X_transformed)
