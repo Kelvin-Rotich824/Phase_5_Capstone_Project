@@ -147,7 +147,7 @@ y = data['dry weight loss']
 
 # VotingRegressor Model Training and Evaluation
 model_1 = joblib.load('regression_model.pkl')
-
+model1.fit(X_scaled)
 y_pred1 = model_1.predict(X_scaled)
 residuals = y - y_pred1
 
