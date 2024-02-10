@@ -3,6 +3,7 @@ import joblib
 import numpy as np
 import streamlit as st
 from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 from sklearn.ensemble import RandomForestRegressor, VotingRegressor
 from xgboost import XGBRegressor
 from sklearn.svm import OneClassSVM
@@ -159,7 +160,11 @@ st.header("Inferential Regression Model")
 st.subheader("Regression Results")
 st.dataframe(df)
 st.subheader("Evaluation Metrics")
-st.write(f"R-squared: {model_1.score(X, y)}")
+st.write(f"R-squared: {r2_score(y, y_pred1)}")
+n = len(y)
+p = len(X_scaled.T)
+adj_r2 = 1 - (1 - r2) * (n - 1) / (n - p)
+st.write(f'Adjusted R-Squared: {adj_r2}')
 st.write(f"RMSE: {np.root(metrics.mean_squared_error(y, y_pred1))}")
 st.write(f"MAE: {metrics.mean_absolute_error(y, y_pred1)}")
 
