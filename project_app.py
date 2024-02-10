@@ -243,6 +243,23 @@ selected_date = st.date_input(
     min_value=pd.to_datetime("2022-01-01"),
     max_value=pd.to_datetime("2050-12-31"),
 )
+
+# Check if a date is selected
+if selected_date:
+    # Call the prediction function
+    prediction = predict_for_date(selected_date)
+
+    # Display the prediction result
+    st.write(f"Predicted dry weight loss for {selected_date}: {prediction}")
+
+   # Plots
+    st.subheader("Forecast Plot")
+    fig = ts_model.plot(forecast)
+    st.pyplot(fig)
+
+else:
+    st.write("Please select a date for prediction.")
+
 # Copying the dataframe.
 ts = data.copy()
 # Setting 'year' as the index
@@ -267,35 +284,9 @@ ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
 # Modelling for graph plots
 ts_model = joblib.load('ts_model.pkl')
 ts_model.fit(ts_prophet)
-future = ts_model.make_future_dataframe(periods=18263, freq="D", include_history=True)
+future = ts_model.make_future_dataframe(periods=len(ts_prophet), freq="D", include_history=True)
 forecast = ts_model.predict(future)
 predictions2 = forecast['yhat'][-len(ts_prophet):]
-
-# Plots
-st.subheader("Forecast Plot")
-fig = ts_model.plot(forecast)
-st.pyplot(fig)
-
-# Metrics
-st.subheader("Model performance")
-st.write(f"RMSE: {np.sqrt(mean_squared_error(y, predictions2))}")
-st.write(f"MAE: {mean_absolute_error(y, predictions2)}")
-
-# Check if a date is selected
-if selected_date:
-    # Call the prediction function
-    prediction = predict_for_date(selected_date)
-
-    # Display the prediction result
-    st.write(f"Predicted dry weight loss for {selected_date}: {prediction}")
-
-   # Plots
-    st.subheader("Forecast Plot")
-    fig = ts_model.plot(forecast)
-    st.pyplot(fig)
-
-else:
-    st.write("Please select a date for prediction.")
 
 # Metrics
 st.subheader("Model performance")
