@@ -122,7 +122,7 @@ data["year"] = data["year"].astype(int)
 data.info()
 
 # Selecting the necessary columns
-X_fourth = X_numeric[['cpi', 'Import Value','Cropland nitrogen per unit area', 'pesticide use per area of cropland', 'Production', 'Yield']]
+X_fourth = data[['cpi', 'Import Value','Cropland nitrogen per unit area', 'pesticide use per area of cropland', 'Production', 'Yield']]
 # Converting their values to the fourth root
 for column in X_fourth.columns:
     X_fourth[column] = X_fourth[column] ** 0.25
