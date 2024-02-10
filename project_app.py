@@ -1,6 +1,7 @@
 import pandas as pd
 import joblib
 import numpy as np
+import matplotlib.pyplot as plt 
 import streamlit as st
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
@@ -171,7 +172,7 @@ st.write(f"MAE: {mean_absolute_error(y, y_pred1)}")
 
 # Residuals Plot
 st.subheader("Residuals Plot")
-fig, ax = st.pyplot.subplots()
+fig, ax = plt.subplots()
 ax.scatter(X[:, 0], residuals)
 ax.set_xlabel("Fitted Values")
 ax.set_ylabel("Residuals")
