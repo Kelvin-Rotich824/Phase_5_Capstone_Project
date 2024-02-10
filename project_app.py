@@ -232,8 +232,12 @@ def predict_for_date(date):
     ts_model.fit(ts_prophet)
     future = ts_model.make_future_dataframe(periods=10592, freq="D", include_history=True)
     forecast = ts_model.predict(future)
-    prediction = forecast['yhat'][-len(ts_prophet):]
-
+    prediction = pd.DataFrame({
+        "ds": forecast["ds"],
+        "yhat": forecast["yhat"],
+        "yhat_lower": forecast["yhat_lower"],
+        "yhat_upper": forecast["yhat_upper"]
+    })
     return prediction
 
 # Date selection
@@ -291,9 +295,20 @@ ts_model = joblib.load('ts_model.pkl')
 ts_model.fit(ts_prophet)
 future = ts_model.make_future_dataframe(periods=len(ts_prophet), freq="D", include_history=False)
 forecast = ts_model.predict(future)
-predictions2 = forecast['yhat'][-len(ts_prophet):]
+predictions2 = pd.DataFrame({
+        "ds": forecast["ds"],
+        "yhat": forecast["yhat"],
+        "yhat_lower": forecast["yhat_lower"],
+        "yhat_upper": forecast["yhat_upper"]
+    })
 
 # Metrics
 st.subheader("Model performance")
-st.write(f"RMSE: {np.sqrt(mean_squared_error(y, predictions2))}")
-st.write(f"MAE: {mean_absolute_error(y, predictions2)}")
+# Calculate and display RMSE and MAE
+actual_values = ts_prophet["y"]
+predicted_value = predictions2["yhat"]
+rmse = np.sqrt(mean_squared_error(actual_values, predicted_value))
+mae = mean_absolute_error(actual_values, predicted_value)
+
+st.write(f"RMSE: {rmse}")
+st.write(f"MAE: {mae}")
