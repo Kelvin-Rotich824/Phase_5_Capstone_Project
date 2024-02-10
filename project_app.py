@@ -166,8 +166,8 @@ n = len(y)
 p = len(X_scaled.T)
 adj_r2 = 1 - (1 - r2) * (n - 1) / (n - p)
 st.write(f'Adjusted R-Squared: {adj_r2}')
-st.write(f"RMSE: {np.sqrt(metrics.mean_squared_error(y, y_pred1))}")
-st.write(f"MAE: {metrics.mean_absolute_error(y, y_pred1)}")
+st.write(f"RMSE: {np.sqrt(mean_squared_error(y, y_pred1))}")
+st.write(f"MAE: {mean_absolute_error(y, y_pred1)}")
 
 # Residuals Plot
 st.subheader("Residuals Plot")
@@ -179,20 +179,20 @@ st.pyplot(fig)
 
 # OneClass Model Training and Evaluation
 svm = joblib.load("anomaly_model.pkl")
-svm.fit(X_transformed)
-y_pred_outlier = svm.predict(X_transformed)
+svm.fit(X_scaled)
+y_pred_outlier = svm.predict(X_scaled)
 
 st.header("Anomaly Detection")
 st.subheader("Anomaly Detection Results")
 st.write(f"Number of Inliers: {len(y_pred_outlier[y_pred_outlier == 1])}")
 st.write(f"Number of Outliers: {len(y_pred_outlier[y_pred_outlier == -1])}")
 st.subheader("Evaluation Metrics )")
-st.write(f"RMSE: {np.sqrt(metrics.mean_squared_error(y, y_pred_outlier))}")
-st.write(f"MAE: {metrics.mean_absolute_error(y, y_pred_outlier)}")
+st.write(f"RMSE: {np.sqrt(mean_squared_error(y, y_pred_outlier))}")
+st.write(f"MAE: {mean_absolute_error(y, y_pred_outlier)}")
 
 # Anomaly Score Distribution
 st.subheader("Anomaly Score Distribution")
-st.histogram(svm.negative_outlier_factor_, bins=20)
+st.histogram(svm.decision_function(X_scaled), bins=20)
 
 # Prophet Forecast
 st.header("Time Series Forecast")
