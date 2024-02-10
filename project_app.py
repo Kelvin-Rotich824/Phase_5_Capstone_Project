@@ -280,8 +280,8 @@ if selected_date:
     prediction = predict_for_date(selected_date)
 
     # Display the prediction result
-    st.write(f"Predicted dry weight loss for {selected_date}: {prediction}")
-
+    st.write(f"Predicted dry weight loss for {selected_date}:")
+    st.dataframe(prediction)
    # Plots
     st.subheader("Forecast Plot")
     fig = ts_model.plot(forecast)
