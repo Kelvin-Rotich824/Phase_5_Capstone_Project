@@ -1,8 +1,10 @@
 import pandas as pd
 import joblib
 import numpy as np
+import matplotlib.pyplot as plt 
 import streamlit as st
 from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 from sklearn.ensemble import RandomForestRegressor, VotingRegressor
 from xgboost import XGBRegressor
 from sklearn.svm import OneClassSVM
@@ -147,50 +149,105 @@ y = data['dry weight loss']
 
 # VotingRegressor Model Training and Evaluation
 model_1 = joblib.load('regression_model.pkl')
-model_1.fit(X_scaled)
+model_1.fit(X_scaled, y)
 y_pred1 = model_1.predict(X_scaled)
 residuals = y - y_pred1
 
-predictions = pd.DataFrame(y_pred1, index=X.index)
+predictions = pd.DataFrame(y_pred1, index=X_transformed.index)
 predictions = predictions.rename(columns={0:'Predicted dry weight loss'})
-df = pd.concat([X_transformed, prediction_data], axis=1)
+df = pd.concat([data, predictions], axis=1)
 
 st.header("Inferential Regression Model")
 st.subheader("Regression Results")
 st.dataframe(df)
 st.subheader("Evaluation Metrics")
-st.write(f"R-squared: {voting_regressor.score(X, y)}")
-st.write(f"RMSE: {np.root(metrics.mean_squared_error(y, y_pred1))}")
-st.write(f"MAE: {metrics.mean_absolute_error(y, y_pred1)}")
+st.write(f"R-squared: {r2_score(y, y_pred1)}")
+r2 = r2_score(y, y_pred1)
+n = len(y)
+p = len(X_scaled.T)
+adj_r2 = 1 - (1 - r2) * (n - 1) / (n - p)
+st.write(f'Adjusted R-Squared: {adj_r2}')
+st.write(f"RMSE: {np.sqrt(mean_squared_error(y, y_pred1))}")
+st.write(f"MAE: {mean_absolute_error(y, y_pred1)}")
 
 # Residuals Plot
 st.subheader("Residuals Plot")
-fig, ax = pyplot.subplots()
-ax.scatter(X[:, 0], residuals)
+fig, ax = plt.subplots()
+ax.scatter(y_pred1, residuals)
 ax.set_xlabel("Fitted Values")
 ax.set_ylabel("Residuals")
 st.pyplot(fig)
 
 # OneClass Model Training and Evaluation
 svm = joblib.load("anomaly_model.pkl")
-svm.fit(X_transformed)
-y_pred_outlier = svm.predict(X_transformed)
+svm.fit(X_scaled)
+y_pred_outlier = svm.predict(X_scaled)
 
 st.header("Anomaly Detection")
 st.subheader("Anomaly Detection Results")
 st.write(f"Number of Inliers: {len(y_pred_outlier[y_pred_outlier == 1])}")
 st.write(f"Number of Outliers: {len(y_pred_outlier[y_pred_outlier == -1])}")
-st.subheader("Evaluation Metrics )")
-st.write(f"RMSE: {np.root(metrics.mean_squared_error(y, y_pred_outlier))}")
-st.write(f"MAE: {metrics.mean_absolute_error(y, y_pred_outlier)}")
+st.subheader("Evaluation Metrics")
+st.write(f"RMSE: {np.sqrt(mean_squared_error(y, y_pred_outlier))}")
+st.write(f"MAE: {mean_absolute_error(y, y_pred_outlier)}")
 
 # Anomaly Score Distribution
 st.subheader("Anomaly Score Distribution")
-st.histogram(svm.negative_outlier_factor_, bins=20)
+fig, ax = plt.subplots()
+ax.hist(svm.decision_function(X_scaled), bins="auto")
+ax.set_xlabel("Values")
+ax.set_ylabel("Frequency")
+
+
+# Plotting the histogram in Streamlit
+st.pyplot(fig)
 
 # Prophet Forecast
 st.header("Time Series Forecast")
-future_date = st.date_input("Select a date for prediction:", value=pd.to_datetime("2050-01-01"))
+# Function to perform prediction for a given date
+def predict_for_date(date):
+    # Preprocess the date (handle potential date format issues)
+    # Copying the dataframe.
+    ts = data.copy()
+    # Setting 'year' as the index
+    ts['year'] = pd.to_datetime(ts['year'], format='%Y')
+    # Dropping the null values
+    ts = ts.dropna(subset=['dry weight loss'])
+    # Grouping the dataframe
+    ts = ts.groupby('year').aggregate({'dry weight loss':'mean'})
+    # Resampling the data to daily
+    ts = ts.resample('D').asfreq()
+    # Filling the null values
+    ts = ts.interpolate(method='linear', axis=0, limit_direction='forward')
+    # Subtracting the weighted rolling mean
+    exp_rolling_mean = ts.ewm(halflife=2).mean()
+    ts_minus_exp_roll_mean = ts - exp_rolling_mean
+    # Differencing of one
+    ts_diff = ts_minus_exp_roll_mean.diff(periods=1).dropna()
+    #Resetting the index of the data
+    ts_prophet = ts_diff.reset_index()
+    ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
+    
+    ts_model = joblib.load('ts_model.pkl')
+    ts_model.fit(ts_prophet)
+    future = ts_model.make_future_dataframe(periods=18263, freq="D", include_history=True)
+    forecast = ts_model.predict(future)
+    prediction = pd.DataFrame({
+        "ds": forecast["ds"],
+        "yhat": forecast["yhat"],
+        "yhat_lower": forecast["yhat_lower"],
+        "yhat_upper": forecast["yhat_upper"]
+    })
+    return prediction
+
+# Date selection
+selected_date = st.date_input(
+    "Select a date for prediction:",
+    value=pd.to_datetime("2050-01-01"),
+    min_value=pd.to_datetime("2022-01-01"),
+    max_value=pd.to_datetime("2050-12-31"),
+)
+
 # Copying the dataframe.
 ts = data.copy()
 # Setting 'year' as the index
@@ -211,13 +268,36 @@ ts_diff = ts_minus_exp_roll_mean.diff(periods=1).dropna()
 #Resetting the index of the data
 ts_prophet = ts_diff.reset_index()
 ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
-
-# Replace date and target columns
+# Modelling for graph plots
 ts_model = joblib.load('ts_model.pkl')
 ts_model.fit(ts_prophet)
 future = ts_model.make_future_dataframe(periods=18263, freq="D", include_history=True)
-forecast = ts_model.predict(future)
+forecast = ts_model.predict(future)   
 
-st.subheader("Forecast Plot")
-fig = ts_model.plot(forecast)
-st.pyplot(fig)
+# Check if a date is selected
+if selected_date:
+    # Call the prediction function
+    prediction = predict_for_date(selected_date)
+
+    # Display the prediction result
+    st.write(f"Predicted dry weight loss for {selected_date}: {prediction['yhat'].iloc[-1]}")
+
+   # Plots
+    st.subheader("Forecast Plot")
+    fig = ts_model.plot(forecast)
+    st.pyplot(fig)
+
+else:
+    st.write("Please select a date for prediction.")
+
+# Fitting the model again
+ts_model2 = joblib.load('ts_model.pkl')
+ts_model2.fit(ts_prophet)
+future2 = ts_model2.make_future_dataframe(periods=len(ts_prophet), freq="D", include_history=False)
+forecast2 = ts_model2.predict(future)
+predictions2 = pd.DataFrame({
+        "ds": forecast["ds"],
+        "yhat": forecast["yhat"],
+        "yhat_lower": forecast["yhat_lower"],
+        "yhat_upper": forecast["yhat_upper"]
+    })
