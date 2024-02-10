@@ -3,6 +3,10 @@ import joblib
 import numpy as np
 import streamlit as st
 from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestRegressor, VotingRegressor
+from xgboost import XGBRegressor
+from sklearn.svm import OneClassSVM
+from prophet import Prophet
 
 # Data loading and preprocessing (replace with your data and preprocessing steps)
 # Loading the datasets
