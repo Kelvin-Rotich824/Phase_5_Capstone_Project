@@ -280,8 +280,8 @@ if selected_date:
     prediction = predict_for_date(selected_date)
 
     # Display the prediction result
-    st.write(f"Predicted dry weight loss for {selected_date}:")
-    st.dataframe(prediction)
+    st.write(f"Predicted dry weight loss for {selected_date}: {prediction['y_hat'].iloc[-1]}")
+
    # Plots
     st.subheader("Forecast Plot")
     fig = ts_model.plot(forecast)
@@ -305,8 +305,8 @@ predictions2 = pd.DataFrame({
 # Metrics
 st.subheader("Model performance")
 # Calculate and display RMSE and MAE
-actual_values = ts_prophet["y"]
-predicted_value = predictions2["yhat"]
+actual_values = ts_prophet["y"].iloc[-1]
+predicted_value = predictions2["yhat"].iloc[-1]
 rmse = np.sqrt(mean_squared_error(actual_values, predicted_value))
 mae = mean_absolute_error(actual_values, predicted_value)
 
