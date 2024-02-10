@@ -264,12 +264,11 @@ ts_diff = ts_minus_exp_roll_mean.diff(periods=1).dropna()
 #Resetting the index of the data
 ts_prophet = ts_diff.reset_index()
 ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
-future = ts_model.make_future_dataframe(periods=18263, freq="D", include_history=True)
-forecast = ts_model.predict(future)   
-
 # Modelling for graph plots
 ts_model = joblib.load('ts_model.pkl')
 ts_model.fit(ts_prophet)
+future = ts_model.make_future_dataframe(periods=10592, freq="D", include_history=True)
+forecast = ts_model.predict(future)   
 
 # Check if a date is selected
 if selected_date:
