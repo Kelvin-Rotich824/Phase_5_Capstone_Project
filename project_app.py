@@ -232,7 +232,7 @@ def predict_for_date(date):
     ts_model.fit(ts_prophet)
     future = ts_model.make_future_dataframe(periods=10592, freq="D", include_history=True)
     forecast = ts_model.predict(future)
-    predictions = forecast['yhat'][-len(ts_prophet):]
+    prediction = forecast['yhat'][-len(ts_prophet):]
 
     return prediction
 
