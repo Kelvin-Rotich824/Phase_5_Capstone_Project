@@ -171,7 +171,7 @@ st.write(f"MAE: {mean_absolute_error(y, y_pred1)}")
 
 # Residuals Plot
 st.subheader("Residuals Plot")
-fig, ax = pyplot.subplots()
+fig, ax = st.pyplot.subplots()
 ax.scatter(X[:, 0], residuals)
 ax.set_xlabel("Fitted Values")
 ax.set_ylabel("Residuals")
