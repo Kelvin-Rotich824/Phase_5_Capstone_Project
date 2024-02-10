@@ -187,7 +187,7 @@ st.header("Anomaly Detection")
 st.subheader("Anomaly Detection Results")
 st.write(f"Number of Inliers: {len(y_pred_outlier[y_pred_outlier == 1])}")
 st.write(f"Number of Outliers: {len(y_pred_outlier[y_pred_outlier == -1])}")
-st.subheader("Evaluation Metrics )")
+st.subheader("Evaluation Metrics")
 st.write(f"RMSE: {np.sqrt(mean_squared_error(y, y_pred_outlier))}")
 st.write(f"MAE: {mean_absolute_error(y, y_pred_outlier)}")
 
@@ -269,7 +269,7 @@ ts_model = joblib.load('ts_model.pkl')
 ts_model.fit(ts_prophet)
 future = ts_model.make_future_dataframe(periods=18263, freq="D", include_history=True)
 forecast = ts_model.predict(future)
-predictions2 = forecast2['yhat'][-len(ts_prophet):]
+predictions2 = forecast['yhat'][-len(ts_prophet):]
 
 # Plots
 st.subheader("Forecast Plot")
