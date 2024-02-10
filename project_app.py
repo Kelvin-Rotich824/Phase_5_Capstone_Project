@@ -153,7 +153,7 @@ residuals = y - y_pred1
 
 predictions = pd.DataFrame(y_pred1, index=X_transformed.index)
 predictions = predictions.rename(columns={0:'Predicted dry weight loss'})
-df = pd.concat([X_transformed, prediction_data], axis=1)
+df = pd.concat([X_transformed, predictions], axis=1)
 
 st.header("Inferential Regression Model")
 st.subheader("Regression Results")
