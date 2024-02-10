@@ -230,7 +230,7 @@ def predict_for_date(date):
     
     ts_model = joblib.load('ts_model.pkl')
     ts_model.fit(ts_prophet)
-    future = ts_model.make_future_dataframe(periods=10592, freq="D", include_history=True)
+    future = ts_model.make_future_dataframe(periods=18263, freq="D", include_history=True)
     forecast = ts_model.predict(future)
     prediction = pd.DataFrame({
         "ds": forecast["ds"],
@@ -271,7 +271,7 @@ ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
 # Modelling for graph plots
 ts_model = joblib.load('ts_model.pkl')
 ts_model.fit(ts_prophet)
-future = ts_model.make_future_dataframe(periods=10592, freq="D", include_history=True)
+future = ts_model.make_future_dataframe(periods=18263, freq="D", include_history=True)
 forecast = ts_model.predict(future)   
 
 # Check if a date is selected
