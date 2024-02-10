@@ -280,7 +280,7 @@ if selected_date:
     prediction = predict_for_date(selected_date)
 
     # Display the prediction result
-    st.write(f"Predicted dry weight loss for {selected_date}: {prediction['y_hat'].iloc[-1]}")
+    st.write(f"Predicted dry weight loss for {selected_date}: {prediction['yhat'].iloc[-1]}")
 
    # Plots
     st.subheader("Forecast Plot")
