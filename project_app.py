@@ -1,7 +1,3 @@
-import subprocess
-
-subprocess.check_call(['pip', 'install', '--upgrade', 'pip'])
-
 import pandas as pd
 import joblib
 import numpy as np
