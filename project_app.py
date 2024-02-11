@@ -248,32 +248,6 @@ selected_date = st.date_input(
     max_value=pd.to_datetime("2050-12-31"),
 )
 
-# Copying the dataframe.
-ts = data.copy()
-# Setting 'year' as the index
-ts['year'] = pd.to_datetime(ts['year'], format='%Y')
-# Dropping the null values
-ts = ts.dropna(subset=['dry weight loss'])
-# Grouping the dataframe
-ts = ts.groupby('year').aggregate({'dry weight loss':'mean'})
-# Resampling the data to daily
-ts = ts.resample('D').asfreq()
-# Filling the null values
-ts = ts.interpolate(method='linear', axis=0, limit_direction='forward')
-# Subtracting the weighted rolling mean
-exp_rolling_mean = ts.ewm(halflife=2).mean()
-ts_minus_exp_roll_mean = ts - exp_rolling_mean
-# Differencing of one
-ts_diff = ts_minus_exp_roll_mean.diff(periods=1).dropna()
-#Resetting the index of the data
-ts_prophet = ts_diff.reset_index()
-ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
-# Modelling for graph plots
-ts_model = joblib.load('ts_model.pkl')
-ts_model.fit(ts_prophet)
-future = ts_model.make_future_dataframe(periods=18263, freq="D", include_history=True)
-forecast = ts_model.predict(future)   
-
 # Check if a date is selected
 if selected_date:
     # Call the prediction function
