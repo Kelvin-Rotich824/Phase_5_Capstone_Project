@@ -7,7 +7,7 @@ dependencies:
   - joblib
   - numpy
   - streamlit
-  - sklearn
+  - scikit-learn
   - xgboost
   - prophet
   - matplotlib
