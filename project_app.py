@@ -284,15 +284,3 @@ if selected_date:
 
 else:
     st.write("Please select a date for prediction.")
-
-# Fitting the model again
-ts_model2 = joblib.load('ts_model.pkl')
-ts_model2.fit(ts_prophet)
-future2 = ts_model2.make_future_dataframe(periods=len(ts_prophet), freq="D", include_history=False)
-forecast2 = ts_model2.predict(future)
-predictions2 = pd.DataFrame({
-        "ds": forecast["ds"],
-        "yhat": forecast["yhat"],
-        "yhat_lower": forecast["yhat_lower"],
-        "yhat_upper": forecast["yhat_upper"]
-    })
