@@ -166,7 +166,7 @@ r2 = r2_score(y, y_pred1)
 n = len(y)
 p = len(X_scaled.T)
 adj_r2 = 1 - (1 - r2) * (n - 1) / (n - p)
-st.write(f'Adjusted R-Squared: {adj_r2}')
+st.write(f"Adjusted R-Squared: {adj_r2}")
 st.write(f"RMSE: {np.sqrt(mean_squared_error(y, y_pred1))}")
 st.write(f"MAE: {mean_absolute_error(y, y_pred1)}")
 
