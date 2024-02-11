@@ -1,8 +1,8 @@
+import streamlit as st
 import pandas as pd
 import joblib
 import numpy as np
 import matplotlib.pyplot as plt 
-import streamlit as st
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 from sklearn.ensemble import RandomForestRegressor, VotingRegressor
