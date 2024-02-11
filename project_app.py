@@ -296,7 +296,3 @@ predictions2 = pd.DataFrame({
         "yhat_lower": forecast["yhat_lower"],
         "yhat_upper": forecast["yhat_upper"]
     })
-
-# Metrics
-st.write(f'RMSE: {np.sqrt(mean_squared_error(ts_prophet["y"].values, predictions2["yhat"].values))}') 
-st.write(f'MAE: {mean_absolute_error(ts_prophet["y"].values, predictions2["yhat"].values)}')  
