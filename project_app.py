@@ -282,11 +282,6 @@ if selected_date:
     # Display the prediction result
     st.write(f"Predicted dry weight loss for {selected_date}: {prediction['yhat'].iloc[-1]}")
 
-   # Plots
-    st.subheader("Forecast Plot")
-    fig = ts_model.plot(forecast)
-    st.pyplot(fig)
-
 else:
     st.write("Please select a date for prediction.")
 
@@ -301,3 +296,7 @@ predictions2 = pd.DataFrame({
         "yhat_lower": forecast["yhat_lower"],
         "yhat_upper": forecast["yhat_upper"]
     })
+
+# Metrics
+st.write(f'RMSE: {np.sqrt(mean_squared_error(ts_prophet["y"].values, predictions2["yhat"].values))}') 
+st.write(f'MAE: {mean_absolute_error(ts_prophet["y"].values, predictions2["yhat"].values)}')  
