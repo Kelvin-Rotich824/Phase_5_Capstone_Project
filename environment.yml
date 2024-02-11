@@ -1,0 +1,13 @@
+name: project_app
+channels: 
+- PypI
+dependencies: 
+  - python=3.11
+  - pandas
+  - joblib
+  - numpy
+  - streamlit
+  - sklearn
+  - xgboost
+  - prophet
+  - matplotlib
