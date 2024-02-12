@@ -249,7 +249,7 @@ predictions = pd.DataFrame()
 # Iterate over each day in the range
 for current_date in pd.date_range(start_date, end_date):
     # Prepare data for prediction (adjust based on your model's requirements)
-    future_data = ts_model.make_future_dataframe(ts_prophet, periods=1, freq="D", include_history=True)
+    future_data = ts_model.make_future_dataframe(periods=1, freq="D", include_history=True)
 
     # Make prediction
     forecast = ts_model.predict(ts_prophet)
@@ -265,5 +265,6 @@ for current_date in pd.date_range(start_date, end_date):
         })
         )
 # Display the predictions
-st.write(f"Predicted dry weight loss for the selected date range:")
-st.dataframe(predictions)
+if st.button("Predict"):
+    st.write(f"Predicted dry weight loss for the selected date range:")
+    st.dataframe(predictions)
