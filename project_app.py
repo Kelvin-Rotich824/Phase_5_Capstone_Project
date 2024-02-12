@@ -224,8 +224,8 @@ ts_model = joblib.load('ts_model.pkl')
 ts_model.fit(ts_prophet)
 
 # Define a function to make predictions
-def make_prediction(start_date, end_date):
-  future_data = ts_model.make_future_dataframe(periods=len(pd.date_range(start_date, end_date)))
+def make_prediction(date):
+  future_data = ts_model.make_future_dataframe(periods=18263, freq=D, include_history=True)
   forecast = ts_model.predict(future_data)
   forecast = pd.DataFrame({
         "ds": forecast["ds"],
@@ -237,9 +237,16 @@ def make_prediction(start_date, end_date):
 # Streamlit interface
 st.header("Time Series Forecast")
 
-start_date = st.date_input("Start date:")
-end_date = st.date_input("End date:")
+selected_date = st.date_input(
+    "Select a date for prediction:"
+    value = pd.to_datetime("2022-01-01")
+    min_value = pd.to_datetime("2022-01-01")
+    max_value = pd.to_datetime("2050-31-12")
+)
 
-if st.button("Predict"):
-  forecast = make_prediction(start_date, end_date)
-  st.dataframe(forecast)
+if selected_date:
+    if st.button("Predict"):
+        forecast = make_prediction(selected_date)
+        st.write(forecast['y_hat'].iloc[-1])
+else:
+    st.write("Please select a date for prediction")
