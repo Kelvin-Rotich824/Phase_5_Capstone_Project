@@ -204,7 +204,7 @@ st.pyplot(fig)
 # Prophet Forecast
 
 # Load your Prophet model
-model = joblib.load('ts_model.pkl')
+ts_model = joblib.load('ts_model.pkl')
 
 # Define a function to make predictions
 def make_prediction(date):
