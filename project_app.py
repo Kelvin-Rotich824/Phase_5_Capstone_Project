@@ -243,8 +243,6 @@ ts_prophet = ts.reset_index()
 ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
 # Fit the model to your data
 ts_model.fit(ts_prophet)
-# Create an empty DataFrame to store predictions
-predictions = pd.DataFrame()
 
 # Iterate over each day in the range
 for current_date in pd.date_range(start_date, end_date):
@@ -258,12 +256,11 @@ for current_date in pd.date_range(start_date, end_date):
     predicted_value = forecast["yhat"].iloc[-1]
 
     # Add prediction to DataFrame
-    predictions = predictions.append(
-        pd.DataFrame({
+    predictions = pd.DataFrame({
             "date": current_date,
             "Dry weight loss": predicted_value
         })
-        )
+        
 # Display the predictions
 if st.button("Predict"):
     st.write(f"Predicted dry weight loss for the selected date range:")
