@@ -224,14 +224,14 @@ def make_prediction(date):
     ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
     # Fit the model to your data
     ts_model.fit(ts_prophet)
-    future_data = ts_model.make_future_dataframe(periods=18263, freq="D", include_history=True)
+    future_data = ts_model.make_future_dataframe(periods=10592, freq="D", include_history=True)
     forecast = ts_model.predict(future_data)
     forecast = pd.DataFrame({
         "ds": forecast["ds"],
         "yhat": forecast["yhat"],
         "yhat_lower": forecast["yhat_lower"],
         "yhat_upper": forecast["yhat_upper"]})
-    return prediction
+    return forecast
 
 # Streamlit interface
 st.header("Time Series Forecast")
