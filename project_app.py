@@ -227,7 +227,7 @@ ts_model.fit(ts_prophet)
 def make_prediction(start_date, end_date):
   future_data = ts_model.make_future_dataframe(periods=len(pd.date_range(start_date, end_date)))
   forecast = ts_model.predict(future_data)
-  prediction = pd.DataFrame({
+  forecast = pd.DataFrame({
         "ds": forecast["ds"],
         "yhat": forecast["yhat"],
         "yhat_lower": forecast["yhat_lower"],
@@ -241,8 +241,5 @@ start_date = st.date_input("Start date:")
 end_date = st.date_input("End date:")
 
 if st.button("Predict"):
-  prediction = make_prediction(start_date, end_date)
-  st.dataframe(prediction)
-
-# Visualize results 
-st.line_chart(prediction[["ds", "yhat"]])
+  forecast = make_prediction(start_date, end_date)
+  st.dataframe(forecast)
