@@ -222,6 +222,9 @@ ts = ts.interpolate(method='linear', axis=0, limit_direction='forward')
 ts_prophet = ts.reset_index()
 ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
 
+# fitting the model
+model.fit(ts_prophet)
+
 # Set prediction date range 
 start_date = pd.to_datetime("2000-01-01")
 end_date = pd.to_datetime("2050-12-31")
@@ -260,7 +263,7 @@ def predict_with_iterations(start_date, end_date, interval_days=1):
 if date_range_selected:
     # Single date range prediction
     prediction_date = date_range_selected[1]  # Use end date of selected range
-    future = model.make_future_dataframe(ts_prophet, periods=1, freq="D")
+    future = model.make_future_dataframe(periods=1, freq="D")
     forecast = model.predict(future)
     predicted_value = forecast["yhat"].iloc[-1]
 
