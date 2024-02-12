@@ -207,21 +207,8 @@ st.pyplot(fig)
 
 # Load your Prophet model
 ts_model = joblib.load('ts_model.pkl')
-
-# Get starting and ending dates from user input
-start_date = st.date_input(
-    "Select a starting date:",
-    value=pd.to_datetime("2022-01-01"),
-    min_value=pd.to_datetime("2022-01-01"),
-    max_value=pd.to_datetime("2050-12-31")
-)
-
-end_date = st.date_input(
-    "Select an ending date:",
-    value=pd.to_datetime("2023-01-01"),
-    min_value=start_date,  # Ensure end date is after start date
-    max_value=pd.to_datetime("2050-12-31")
-)
+# Fit the model to your data
+ts_model.fit(ts_prophet)
 
 # Define a function to make predictions
 def make_prediction(date):
@@ -240,9 +227,7 @@ def make_prediction(date):
     # Resetting the index and renaming the columns
     ts_prophet = ts.reset_index()
     ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
-    # Fit the model to your data
-    ts_model.fit(ts_prophet)
-    future_data = ts_model.make_future_dataframe(periods=1, freq="D", include_history=True)
+    future_data = ts_model.make_future_dataframe(periods=10592, freq="D", include_history=True)
     forecast = ts_model.predict(future_data)
     forecast = pd.DataFrame({
         "ds": forecast["ds"],
