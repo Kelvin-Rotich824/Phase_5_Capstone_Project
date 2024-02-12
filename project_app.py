@@ -214,7 +214,7 @@ ts = ts.resample('D').asfreq()
 # Filling the null values
 ts = ts.interpolate(method='linear', axis=0, limit_direction='forward')
 # Resetting the index and renaming the columns
-ts_prophet = ts_diff.reset_index()
+ts_prophet = ts.reset_index()
 ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
     
 # Create a Prophet model
