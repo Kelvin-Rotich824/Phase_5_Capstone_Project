@@ -204,7 +204,7 @@ st.pyplot(fig)
 # Prophet Forecast
 
 # Load your Prophet model
-ts_model = joblib.load('ts_model.pkl')
+model = joblib.load('ts_model.pkl')
 
 # Copying the dataset
 ts = data.copy()
