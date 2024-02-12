@@ -250,7 +250,7 @@ for current_date in pd.date_range(start_date, end_date):
     future_data = ts_model.make_future_dataframe(periods=1, freq="D", include_history=True)
 
     # Make prediction
-    forecast = ts_model.predict(ts_prophet)
+    forecast = ts_model.predict(future_data)
 
     # Get predicted value
     predicted_value = forecast["yhat"].iloc[-1]
