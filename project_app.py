@@ -247,6 +247,6 @@ selected_date = st.date_input(
 if selected_date:
     if st.button("Predict"):
         forecast = make_prediction(selected_date)
-        st.write(f"Predicted dry weight loss for {selected_date}: {forecast['yhat'].iloc[-1]}")
+        st.write(f"Predicted dry weight loss for {selected_date}: {forecast['yhat']}")
 else:
     st.write("Please select a date for prediction")
