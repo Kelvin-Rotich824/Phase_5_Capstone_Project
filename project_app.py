@@ -254,14 +254,7 @@ for current_date in pd.date_range(start_date, end_date):
 
     # Get predicted value
     predicted_value = forecast["yhat"].iloc[-1]
-
-    # Add prediction to DataFrame
-    predictions = pd.DataFrame({
-            "date": current_date,
-            "Dry weight loss": predicted_value
-        })
         
 # Display the predictions
 if st.button("Predict"):
-    st.write(f"Predicted dry weight loss for the selected date range:")
-    st.dataframe(predictions)
+    st.write(f"Predicted dry weight loss for the selected date range: {predicted_value} tonnes.")
