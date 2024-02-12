@@ -206,74 +206,47 @@ st.pyplot(fig)
 # Load your Prophet model
 model = joblib.load('ts_model.pkl')
 
-# Copying the dataset
-ts = data.copy()
-# Setting 'year' as the index
-ts['year'] = pd.to_datetime(ts['year'], format='%Y')
-# Dropping the null values
-ts = ts.dropna(subset=['dry weight loss'])
-# Grouping the dataframe
-ts = ts.groupby('year').aggregate({'dry weight loss':'mean'})
-# Resampling the data to daily
-ts = ts.resample('D').asfreq()
-# Filling the null values
-ts = ts.interpolate(method='linear', axis=0, limit_direction='forward')
-# Resetting the index and renaming the columns
-ts_prophet = ts.reset_index()
-ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
+# Define a function to make predictions
+def make_prediction(date):
+    # Copying the dataframe.
+    ts = data.copy()
+    # Setting 'year' as the index
+    ts['year'] = pd.to_datetime(ts['year'], format='%Y')
+    # Dropping the null values
+    ts = ts.dropna(subset=['dry weight loss'])
+    # Grouping the dataframe
+    ts = ts.groupby('year').aggregate({'dry weight loss':'mean'})
+    # Resampling the data to daily
+    ts = ts.resample('D').asfreq()
+    # Filling the null values
+    ts = ts.interpolate(method='linear', axis=0, limit_direction='forward')
+    # Resetting the index and renaming the columns
+    ts_prophet = ts.reset_index()
+    ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
+    # Fit the model to your data
+    ts_model.fit(ts_prophet)
+    future_data = ts_model.make_future_dataframe(periods=1, freq="D", include_history=True)
+    forecast = ts_model.predict(future_data)
+    forecast = pd.DataFrame({
+        "ds": forecast["ds"],
+        "yhat": forecast["yhat"],
+        "yhat_lower": forecast["yhat_lower"],
+        "yhat_upper": forecast["yhat_upper"]})
+    return forecast
 
-# fitting the model
-model.fit(ts_prophet)
+# Streamlit interface
+st.header("Time Series Forecast")
 
-# Set prediction date range 
-start_date = pd.to_datetime("2000-01-01")
-end_date = pd.to_datetime("2050-12-31")
-
-# Create interactive date selection (add if desired)
-date_range_selected = st.date_input(
-    "Select a date range for prediction:",
-    value=(start_date, end_date),
-    min_value=start_date,
-    max_value=end_date,
+selected_date = st.date_input(
+    "Select a date for prediction:",
+    value = pd.to_datetime("2022-01-01"),
+    min_value = pd.to_datetime("2022-01-01"),
+    max_value = pd.to_datetime("2050-12-31"),
 )
 
-# Define function for iterative predictions 
-def predict_with_iterations(start_date, end_date, interval_days=1):
-    predictions_df = pd.DataFrame()
-    current_date = start_date
-
-    while current_date <= end_date:
-        future_date = current_date + timedelta(days=interval_days)
-        future = model.make_future_dataframe(ts_prophet, periods=1, freq="D")
-        forecast = model.predict(future)
-        predicted_value = forecast["yhat"].iloc[-1]
-
-        predictions_df = predictions_df.append(
-            pd.DataFrame({
-                "date": current_date,
-                "dry weight loss": predicted_value
-            })
-        )
-
-        current_date = current_date + timedelta(days=interval_days)
-
-    return predictions_df
-
-# Choose prediction method 
-if date_range_selected:
-    # Single date range prediction
-    prediction_date = date_range_selected[1]  # Use end date of selected range
-    future = model.make_future_dataframe(periods=1, freq="D")
-    forecast = model.predict(future)
-    predicted_value = forecast["yhat"].iloc[-1]
-
-    # Display prediction result
-    st.write(f"Predicted dry weight loss for {prediction_date}: {predicted_value}")
-
+if selected_date:
+    if st.button("Predict"):
+        forecast = make_prediction(selected_date)
+        st.write(f"Predicted dry weight loss for {selected_date}: {forecast['yhat'].iloc[-1]}")
 else:
-    # Iterative predictions 
-    predictions_df = predict_with_iterations(start_date, end_date, interval_days=1)
-
-    # Display table of predictions 
-    st.write("Predicted dry weight loss across the date range:")
-    st.dataframe(predictions_df[["date", "dry weight loss"]])
+    st.write("Please select a date for prediction")
