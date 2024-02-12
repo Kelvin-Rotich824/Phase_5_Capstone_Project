@@ -9,7 +9,7 @@ from sklearn.ensemble import RandomForestRegressor, VotingRegressor
 from xgboost import XGBRegressor
 from sklearn.svm import OneClassSVM
 from prophet import Prophet
-from datetime import timedelta
+import plotly
 
 # Data loading and preprocessing (replace with your data and preprocessing steps)
 # Loading the datasets
