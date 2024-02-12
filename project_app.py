@@ -240,7 +240,7 @@ selected_date = st.date_input(
     "Select a date for prediction:",
     value = pd.to_datetime("2022-01-01"),
     min_value = pd.to_datetime("2022-01-01"),
-    max_value = pd.to_datetime("2050-31-12"),
+    max_value = pd.to_datetime("2050-12-31"),
 )
 
 if selected_date:
