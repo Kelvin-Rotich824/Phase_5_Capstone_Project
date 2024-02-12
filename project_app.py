@@ -197,64 +197,52 @@ fig, ax = plt.subplots()
 ax.hist(svm.decision_function(X_scaled), bins="auto")
 ax.set_xlabel("Values")
 ax.set_ylabel("Frequency")
-
-
 # Plotting the histogram in Streamlit
 st.pyplot(fig)
 
 # Prophet Forecast
-st.header("Time Series Forecast")
-# Function to perform prediction for a given date
-def predict_for_date(date):
-    # Preprocess the date (handle potential date format issues)
-    # Copying the dataframe.
-    ts = data.copy()
-    # Setting 'year' as the index
-    ts['year'] = pd.to_datetime(ts['year'], format='%Y')
-    # Dropping the null values
-    ts = ts.dropna(subset=['dry weight loss'])
-    # Grouping the dataframe
-    ts = ts.groupby('year').aggregate({'dry weight loss':'mean'})
-    # Resampling the data to daily
-    ts = ts.resample('D').asfreq()
-    # Filling the null values
-    ts = ts.interpolate(method='linear', axis=0, limit_direction='forward')
-    # Subtracting the weighted rolling mean
-    exp_rolling_mean = ts.ewm(halflife=2).mean()
-    ts_minus_exp_roll_mean = ts - exp_rolling_mean
-    # Differencing of one
-    ts_diff = ts_minus_exp_roll_mean.diff(periods=1).dropna()
-    #Resetting the index of the data
-    ts_prophet = ts_diff.reset_index()
-    ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
+# Copying the dataframe.
+ts = data.copy()
+# Setting 'year' as the index
+ts['year'] = pd.to_datetime(ts['year'], format='%Y')
+# Dropping the null values
+ts = ts.dropna(subset=['dry weight loss'])
+# Grouping the dataframe
+ts = ts.groupby('year').aggregate({'dry weight loss':'mean'})
+# Resampling the data to daily
+ts = ts.resample('D').asfreq()
+# Filling the null values
+ts = ts.interpolate(method='linear', axis=0, limit_direction='forward')
+# Resetting the index and renaming the columns
+ts_prophet = ts_diff.reset_index()
+ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
     
-    ts_model = joblib.load('ts_model.pkl')
-    ts_model.fit(ts_prophet)
-    future = ts_model.make_future_dataframe(periods=18263, freq="D", include_history=True)
-    forecast = ts_model.predict(future)
-    prediction = pd.DataFrame({
+# Create a Prophet model
+ts_model = joblib.load('ts_model.pkl')
+
+# Fit the model to your data
+ts_model.fit(ts_prophet)
+
+# Define a function to make predictions
+def make_prediction(start_date, end_date):
+  future_data = ts_model.make_future_dataframe(periods=len(pd.date_range(start_date, end_date)))
+  forecast = ts_model.predict(future_data)
+  prediction = pd.DataFrame({
         "ds": forecast["ds"],
         "yhat": forecast["yhat"],
         "yhat_lower": forecast["yhat_lower"],
-        "yhat_upper": forecast["yhat_upper"]
-    })
-    return prediction
+        "yhat_upper": forecast["yhat_upper"]})
+  return prediction
 
-# Date selection
-selected_date = st.date_input(
-    "Select a date for prediction:",
-    value=pd.to_datetime("2050-01-01"),
-    min_value=pd.to_datetime("2022-01-01"),
-    max_value=pd.to_datetime("2050-12-31"),
-)
+# Streamlit interface
+st.header("Time Series Forecast")
 
-# Check if a date is selected
-if selected_date:
-    # Call the prediction function
-    prediction = predict_for_date(selected_date)
+start_date = st.date_input("Start date:")
+end_date = st.date_input("End date:")
 
-    # Display the prediction result
-    st.write(f"Predicted dry weight loss for {selected_date}: {prediction['yhat'].iloc[-1]}")
+if st.button("Predict"):
+  prediction = make_prediction(start_date, end_date)
+  st.dataframe(prediction)
 
-else:
-    st.write("Please select a date for prediction.")
+# Visualize results 
+st.line_chart(prediction[["ds", "yhat"]])
