@@ -225,7 +225,8 @@ ts_prophet = ts.reset_index()
 ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
 
 def make_prediction(date, n_periods=1):
-    future_data = ts_model.make_future_dataframe(ts_prophet, periods=n_periods, freq="D", include_history=True)
+    ts_model.fit(ts_prophet)
+    future_data = ts_model.make_future_dataframe(periods=n_periods, freq="D", include_history=True)
     forecast = ts_model.fit_predict(future_data)
     return forecast
 
@@ -247,8 +248,7 @@ prediction_days = st.number_input(
 )
 
 if selected_date:
-    if  st.button("Predict"):
-        forecast = make_prediction(selected_date, prediction_days)
-        st.write(f"Predicted dry weight loss for {selected_date}+{prediction_days} days: {forecast['yhat'].iloc[-1]} tonnes")
+    forecast = make_prediction(selected_date, prediction_days)
+    st.write(f"Predicted dry weight loss for {selected_date}+{prediction_days} days: {forecast['yhat'].iloc[-1]} tonnes")
 else:
     st.write("Please select a date for prediction")
