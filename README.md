@@ -1,14 +1,5 @@
 # Reducing Maize Post-Harvest Losses in Sub-Saharan Africa: A Data-Driven Approach
-
-
-
-
-
-
-
-
-
-
+![Maize farm 1](https://github.com/Kelvin-Rotich824/Phase_5_Capstone_Project/assets/142001883/dfbe22aa-1499-4e86-b95b-872f5e73309e)
 
 ## Problem Statement
 
