@@ -227,9 +227,9 @@ def load_model():
 ts_prophet = load_data()
 
 ts_model = load_model()
+ts_model.fit(ts_prophet)
 
 def make_prediction(date, n_periods=1):
-    ts_model.fit(ts_prophet)
     future_data = ts_model.make_future_dataframe(periods=n_periods, freq="D", include_history=True)
     forecast = ts_model.predict(future_data)
     return forecast
