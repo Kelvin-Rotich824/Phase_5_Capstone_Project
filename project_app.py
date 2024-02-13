@@ -253,7 +253,6 @@ prediction_days = st.number_input(
 if st.button("Predict"):
     if selected_date:
         forecast = make_prediction(selected_date, prediction_days)
-        st.write(f"Predicted dry weight loss for {selected_date}+{prediction_days} days: {forecast['yhat'].iloc[-1]} tonnes")
-        st.line_chart(forecast[['ds', 'yhat']])    
+        st.write(f"Predicted dry weight loss for {selected_date}+{prediction_days} days: {forecast['yhat'].iloc[-1]} tonnes")    
     else:
         st.write("Please select a date for prediction")
