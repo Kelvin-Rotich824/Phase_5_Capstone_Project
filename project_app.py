@@ -235,7 +235,7 @@ def make_prediction(date, n_periods=1):
     return forecast
 
 # Streamlit interface
-st.header("Time Series Forecast")
+st.header("Maize Post-Harvest Loss Forecast")
 
 selected_date = st.date_input(
     "Select a date for prediction:",
