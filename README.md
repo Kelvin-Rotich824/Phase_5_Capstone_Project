@@ -46,15 +46,15 @@ This is where the data is resampled to daily frequency and null values are inter
 ## 3. Modeling
 
 The goal is to build a regression model that can accurately predict crop dry weight loss based on various predictor variables like climate, yields, production, etc. Multiple regression algorithms such as Linear, Ridge, and Lasso, DecisionTree, and RandomForest are evaluated one by one to determine the best approach. Random Forest Regression achieves the lowest error scores out of all the models, which makes it the best approach for predicting crop dry weight loss. The base model was further improved after employing Optuna as a hyperparameter tuning technique, allowing for the creation of more optimized RandomForest and XGBoost models with the former still having the best performance.
-
+![ARIMA 2](https://github.com/Kelvin-Rotich824/Phase_5_Capstone_Project/assets/142001883/f4c84041-db3c-46f5-9a2b-956c1db512c9)
 ## 4. Conclusion
 
-. Regional Trends: Western African countries experience the highest maize post-harvest losses, followed by Southern Africa, which also boasts the highest maize production quantity among the regions.
-. Temporal Patterns: Maize post-harvest losses exhibited a rising trend from 2000 up to around 2010, followed by a subsequent decline.
-. Regression Modeling: A regression model was developed to uncover insights into the relationship between various features and maize loss, providing valuable analytical depth.
-. Anomaly Detection: Anomalies detected within the data may have contributed to the observed maize losses, highlighting areas for further investigation and intervention.
-. Time Series Prediction: A time series model was successfully constructed, enabling the prediction of maize loss across sub-Saharan Africa over multiple years.
-This project holds the potential to make a significant impact on food security and economic development in Sub-Saharan Africa. By harnessing the power of data science and machine learning, we aim to reduce post-harvest losses, increase food availability and the scale of grain farming, and contribute to sustainable development in the region.
+- Regional Trends: Western African countries experience the highest maize post-harvest losses, followed by Southern Africa, which also boasts the highest maize production quantity among the regions.
+- Temporal Patterns: Maize post-harvest losses exhibited a rising trend from 2000 up to around 2010, followed by a subsequent decline.
+- Regression Modeling: A regression model was developed to uncover insights into the relationship between various features and maize loss, providing valuable analytical depth.
+- Anomaly Detection: Anomalies detected within the data may have contributed to the observed maize losses, highlighting areas for further investigation and intervention.
+- Time Series Prediction: A time series model was successfully constructed, enabling the prediction of maize loss across sub-Saharan Africa over multiple years.
+#### This project holds the potential to make a significant impact on food security and economic development in Sub-Saharan Africa. By harnessing the power of data science and machine learning, we aim to reduce post-harvest losses, increase food availability and the scale of grain farming, and contribute to sustainable development in the region.
 
 ### Project Team 
 - Kelvin Rotich (https://github.com/Kelvin-Rotich824)
