@@ -42,7 +42,7 @@ As we can see, there is a strong positive correlation between import value and i
 ### 2.4 Time Series Analysis
 
 This is where the data is resampled to daily frequency and null values are interpolated. A comparison is made between the original and resampled datasets, confirming similar characteristics.
-
+![Line plot 2 TSA](https://github.com/Kelvin-Rotich824/Phase_5_Capstone_Project/assets/142001883/04565c35-ca7d-4862-b696-54eec9089353)
 ## 3. Modeling
 
 The goal is to build a regression model that can accurately predict crop dry weight loss based on various predictor variables like climate, yields, production, etc. Multiple regression algorithms such as Linear, Ridge, and Lasso, DecisionTree, and RandomForest are evaluated one by one to determine the best approach. Random Forest Regression achieves the lowest error scores out of all the models, which makes it the best approach for predicting crop dry weight loss. The base model was further improved after employing Optuna as a hyperparameter tuning technique, allowing for the creation of more optimized RandomForest and XGBoost models with the former still having the best performance.
