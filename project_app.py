@@ -148,7 +148,7 @@ X_transformed = pd.concat([X_transformed, data['years_to_2050']], axis=1)
 X_scaled = StandardScaler().fit_transform(X_transformed)
 
 # Stating the target variable
-y = data['dry weight loss']
+y = data['dry weight loss'] 
 
 # VotingRegressor Model Training and Evaluation
 model_1 = joblib.load('regression_model.pkl')
@@ -160,7 +160,7 @@ predictions = pd.DataFrame(y_pred1, index=X_transformed.index)
 predictions = predictions.rename(columns={0:'Predicted dry weight loss'})
 df = pd.concat([data, predictions], axis=1)
 
-st.header("Inferential Regression Model")
+st.header("Inferential Regression Results")
 st.subheader("Regression Results")
 st.dataframe(df)
 st.subheader("Evaluation Metrics")
@@ -204,7 +204,6 @@ ax.set_ylabel("Frequency")
 st.pyplot(fig)
 
 # Prophet Forecast
-
 @st.cache_data
 def load_data():
     # Preprocess the data
@@ -250,6 +249,7 @@ prediction_days = st.number_input(
     max_value=365,
     value=1
 )
+    
 if st.button("Predict"):
     if selected_date:
         forecast = make_prediction(selected_date, prediction_days)
