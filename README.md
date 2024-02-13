@@ -3,7 +3,7 @@
 
 ## Problem Statement
 
-Post-harvest losses of Maize in Sub-Saharan Africa are substantial, ranging from 30% to 50%. Traditional monitoring and mitigation methods require enhancement to be more effective and resource-efficient.
+Post-harvest losses of Maize in Sub-Saharan Africa are substantial across the supply chain, ranging from 30% to 50% of total yield. Traditional monitoring and mitigation methods require enhancement to be more effective and resource-efficient.
 
 ## Introduction
 
