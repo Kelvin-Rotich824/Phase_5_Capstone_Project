@@ -227,7 +227,7 @@ ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
 def make_prediction(date, n_periods=1):
     ts_model.fit(ts_prophet)
     future_data = ts_model.make_future_dataframe(periods=n_periods, freq="D", include_history=True)
-    forecast = ts_model.fit(future_data)
+    forecast = ts_model.predict(future_data)
     return forecast
 
 # Streamlit interface
