@@ -230,6 +230,7 @@ ts_model = load_model()
 
 def make_prediction(date, n_periods=1):
     future_data = ts_model.make_future_dataframe(periods=n_periods, freq="D", include_history=True)
+    ts_model.fit(future_data)
     forecast = ts_model.predict(future_data)
     return forecast
 
