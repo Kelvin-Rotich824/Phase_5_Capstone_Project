@@ -246,9 +246,9 @@ prediction_days = st.number_input(
     max_value=365,
     value=1
 )
-
-if selected_date:
-    forecast = make_prediction(selected_date, prediction_days)
-    st.write(f"Predicted dry weight loss for {selected_date}+{prediction_days} days: {forecast['yhat'].iloc[-1]} tonnes")
-else:
-    st.write("Please select a date for prediction")
+if st.button("Predict"):
+    if selected_date:
+        forecast = make_prediction(selected_date, prediction_days)
+        st.write(f"Predicted dry weight loss for {selected_date}+{prediction_days} days: {forecast['yhat'].iloc[-1]} tonnes")
+    else:
+        st.write("Please select a date for prediction")
