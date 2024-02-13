@@ -207,8 +207,6 @@ st.pyplot(fig)
 
 @st.cache_data
 def load_data():
-    # Load the data from the file
-    data = pd.read_csv("data.csv")
     # Preprocess the data
     ts = data.copy()
     ts['year'] = pd.to_datetime(ts['year'], format='%Y')
