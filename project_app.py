@@ -205,24 +205,30 @@ st.pyplot(fig)
 
 # Prophet Forecast
 
-# Load your Prophet model
-ts_model = joblib.load('ts_model.pkl')
-  
-# Copying the dataframe.
-ts = data.copy()
-# Setting 'year' as the index
-ts['year'] = pd.to_datetime(ts['year'], format='%Y')
-# Dropping the null values
-ts = ts.dropna(subset=['dry weight loss'])
-# Grouping the dataframe
-ts = ts.groupby('year').aggregate({'dry weight loss':'mean'})
-# Resampling the data to daily
-ts = ts.resample('D').asfreq()
-# Filling the null values
-ts = ts.interpolate(method='linear', axis=0, limit_direction='forward')
-# Resetting the index and renaming the columns
-ts_prophet = ts.reset_index()
-ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
+@st.cache_data
+def load_data():
+    # Load the data from the file
+    data = pd.read_csv("data.csv")
+    # Preprocess the data
+    ts = data.copy()
+    ts['year'] = pd.to_datetime(ts['year'], format='%Y')
+    ts = ts.dropna(subset=['dry weight loss'])
+    ts = ts.groupby('year').aggregate({'dry weight loss':'mean'})
+    ts = ts.resample('D').asfreq()
+    ts = ts.interpolate(method='linear', axis=0, limit_direction='forward')
+    ts_prophet = ts.reset_index()
+    ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
+    return ts_prophet
+
+@st.cache_data
+def load_model():
+    # Load the Prophet model from the file
+    ts_model = joblib.load('ts_model.pkl')
+    return ts_model
+
+ts_prophet = load_data()
+
+ts_model = load_model()
 
 def make_prediction(date, n_periods=1):
     ts_model.fit(ts_prophet)
@@ -250,5 +256,6 @@ if st.button("Predict"):
     if selected_date:
         forecast = make_prediction(selected_date, prediction_days)
         st.write(f"Predicted dry weight loss for {selected_date}+{prediction_days} days: {forecast['yhat'].iloc[-1]} tonnes")
+        st.line_chart(forecast[['ds', 'yhat']])    
     else:
         st.write("Please select a date for prediction")
