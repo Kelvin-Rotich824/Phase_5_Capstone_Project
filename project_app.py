@@ -207,33 +207,29 @@ st.pyplot(fig)
 
 # Load your Prophet model
 ts_model = joblib.load('ts_model.pkl')
+  
+# Copying the dataframe.
+ts = data.copy()
+# Setting 'year' as the index
+ts['year'] = pd.to_datetime(ts['year'], format='%Y')
+# Dropping the null values
+ts = ts.dropna(subset=['dry weight loss'])
+# Grouping the dataframe
+ts = ts.groupby('year').aggregate({'dry weight loss':'mean'})
+# Resampling the data to daily
+ts = ts.resample('D').asfreq()
+# Filling the null values
+ts = ts.interpolate(method='linear', axis=0, limit_direction='forward')
+# Resetting the index and renaming the columns
+ts_prophet = ts.reset_index()
+ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
 
-# Define a function to make predictions
-def make_prediction(date, i):
-    # Copying the dataframe.
-    ts = data.copy()
-    # Setting 'year' as the index
-    ts['year'] = pd.to_datetime(ts['year'], format='%Y')
-    # Dropping the null values
-    ts = ts.dropna(subset=['dry weight loss'])
-    # Grouping the dataframe
-    ts = ts.groupby('year').aggregate({'dry weight loss':'mean'})
-    # Resampling the data to daily
-    ts = ts.resample('D').asfreq()
-    # Filling the null values
-    ts = ts.interpolate(method='linear', axis=0, limit_direction='forward')
-    # Resetting the index and renaming the columns
-    ts_prophet = ts.reset_index()
-    ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
-    # Fit the model to your data
-    ts_model.fit(ts_prophet)
-    future_data = ts_model.make_future_dataframe(periods=i, freq="D", include_history=True)
+# Fit the model once
+ts_model.fit(ts_prophet)
+
+def make_prediction(date, n_periods=1):
+    future_data = ts_model.make_future_dataframe(periods=n_periods, freq="D", include_history=True)
     forecast = ts_model.predict(future_data)
-    forecast = pd.DataFrame({
-        "ds": forecast["ds"],
-        "yhat": forecast["yhat"],
-        "yhat_lower": forecast["yhat_lower"],
-        "yhat_upper": forecast["yhat_upper"]})
     return forecast
 
 # Streamlit interface
@@ -241,18 +237,21 @@ st.header("Time Series Forecast")
 
 selected_date = st.date_input(
     "Select a date for prediction:",
-    value = pd.to_datetime("2022-01-01"),
-    min_value = pd.to_datetime("2022-01-01"),
-    max_value = pd.to_datetime("2050-12-31"),
+    value=pd.to_datetime("2022-01-01"),
+    min_value=pd.to_datetime("2022-01-01"),
+    max_value=pd.to_datetime("2050-12-31")
 )
 
-min_value = pd.to_datetime("2022-01-01")
-max_value = pd.to_datetime("2050-12-31")
+prediction_days = st.number_input(
+    "Number of days to predict (future from selected date):",
+    min_value=1,
+    max_value=365,
+    value=1
+)
 
 if selected_date:
-    i = len(selected_date - min_value) + 1
-    if st.button("Predict"):
-        forecast = make_prediction(selected_date, i)
-        st.write(f"Predicted dry weight loss for {selected_date}: {forecast['yhat'].iloc[0]} tonnes")
+    if  st.button("Predict"):
+        forecast = make_prediction(selected_date, prediction_days)
+        st.write(f"Predicted dry weight loss for {selected_date}+{prediction_days} days: {forecast['yhat'].iloc[-1]} tonnes")
 else:
     st.write("Please select a date for prediction")
