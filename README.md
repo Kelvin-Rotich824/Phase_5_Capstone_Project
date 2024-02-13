@@ -27,6 +27,7 @@ Secondly, we embarked on an exploration of the different features within the dat
 ### 2.1 Univariate Analysis
 
 The exploration begins with univariate analysis, where histograms are created for selected columns to observe their distributions. All histograms, except for temperature change, display positive skewness, indicating that their means are lower than their medians, and they do not follow a normal distribution.
+![Hist dry weight loss](https://github.com/Kelvin-Rotich824/Phase_5_Capstone_Project/assets/142001883/9a75e8bd-f795-4b27-b0a3-aefc521a3032)
 
 ### 2.2 Bivariate Analysis
 
