@@ -9,7 +9,7 @@ from sklearn.ensemble import RandomForestRegressor, VotingRegressor
 from xgboost import XGBRegressor
 from sklearn.svm import OneClassSVM
 from prophet import Prophet
-import plotly
+
 
 st.title("Maize Post-Harvest Loss in Sub-Saharan Africa")
 
@@ -205,26 +205,11 @@ st.pyplot(fig)
 
 # Prophet Forecast
 
-# Copying the dataframe.
-ts = data.copy()
-# Setting 'year' as the index
-ts['year'] = pd.to_datetime(ts['year'], format='%Y')
-# Dropping the null values
-ts = ts.dropna(subset=['dry weight loss'])
-# Grouping the dataframe
-ts = ts.groupby('year').aggregate({'dry weight loss':'mean'})
-# Resampling the data to daily
-ts = ts.resample('D').asfreq()
-# Filling the null values
-ts = ts.interpolate(method='linear', axis=0, limit_direction='forward')
-# Resetting the index and renaming the columns
-ts_prophet = ts.reset_index()
-ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
 # Load your Prophet model
 ts_model = joblib.load('ts_model.pkl')
 
 # Define a function to make predictions
-def make_prediction(date):
+def make_prediction(date, i):
     # Copying the dataframe.
     ts = data.copy()
     # Setting 'year' as the index
@@ -242,7 +227,7 @@ def make_prediction(date):
     ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
     # Fit the model to your data
     ts_model.fit(ts_prophet)
-    future_data = ts_model.make_future_dataframe(periods=10592, freq="D", include_history=True)
+    future_data = ts_model.make_future_dataframe(periods=i, freq="D", include_history=True)
     forecast = ts_model.predict(future_data)
     forecast = pd.DataFrame({
         "ds": forecast["ds"],
@@ -261,9 +246,13 @@ selected_date = st.date_input(
     max_value = pd.to_datetime("2050-12-31"),
 )
 
+min_value = pd.to_datetime("2022-01-01")
+max_value = pd.to_datetime("2050-12-31")
+
 if selected_date:
+    i = len(selected_date - min_value) + 1
     if st.button("Predict"):
-        forecast = make_prediction(selected_date)
+        forecast = make_prediction(selected_date, i)
         st.write(f"Predicted dry weight loss for {selected_date}: {forecast['yhat'].iloc[0]} tonnes")
 else:
     st.write("Please select a date for prediction")
