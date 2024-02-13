@@ -224,12 +224,9 @@ ts = ts.interpolate(method='linear', axis=0, limit_direction='forward')
 ts_prophet = ts.reset_index()
 ts_prophet = ts_prophet.rename(columns={'year': 'ds', 'dry weight loss': 'y'})
 
-# Fit the model once
-ts_model.fit(ts_prophet)
-
 def make_prediction(date, n_periods=1):
-    future_data = ts_model.make_future_dataframe(periods=n_periods, freq="D", include_history=True)
-    forecast = ts_model.predict(future_data)
+    future_data = ts_model.make_future_dataframe(ts_prophet, periods=n_periods, freq="D", include_history=True)
+    forecast = ts_model.fit_predict(future_data)
     return forecast
 
 # Streamlit interface
