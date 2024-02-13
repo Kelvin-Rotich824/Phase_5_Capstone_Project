@@ -37,6 +37,7 @@ Moving on to bivariate analysis, scatter plots are generated to compare numerica
 ### 2.3 Multivariate Analysis
 
 As we can see, there is a strong positive correlation between import value and import quantity, cropland nitrogen per unit area, and cropland potassium per unit area production, and area harvested. The others correlate 0.65.
+![Multivariate analysis](https://github.com/Kelvin-Rotich824/Phase_5_Capstone_Project/assets/142001883/d9b2d08d-4d09-4f1d-8d6d-8b63e015ed99)
 
 ### 2.4 Time Series Analysis
 
